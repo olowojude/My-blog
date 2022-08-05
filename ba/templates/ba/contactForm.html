@@ -4,23 +4,23 @@
 
 <!-- contact us form container -->
 <form method="POST" action="" class="form_container">	
-				{% csrf_token %}
-				<!-- individual input container1 -->				
-				<div class="form_holder">
-								<input type="text" class="transparent" name="name" placeholder="Name..." required>
-				</div>
+	{% csrf_token %}
+	<!-- individual input container1 -->				
+	<div class="form_holder">
+		<input type="text" class="transparent" name="name" placeholder="Name..." required>
+	</div>
 												                
-				<!-- individual input container2  -->	
-				<div class="form_holder">
-								<input class="transparent" type="text" name="email" placeholder="Email..." >
-				</div>
+	<!-- individual input container2  -->	
+	<div class="form_holder">
+		<input class="transparent" type="text" name="email" placeholder="Email..." >
+	</div>
 													
-				<!-- individual input cont.. 3 for message -->
-				<div>
-								<input class="transparent" name="body" placeholder="Type Message Here.."></input>
-				</div>
+	<!-- individual input cont.. 3 for message -->
+	<div>
+		<input class="transparent" name="body" placeholder="Type Message Here.."></input>
+	</div>
 												
-				<!-- input button -->		
-				<input id="send_msg_btn" type="submit" value="Send">															
+	<!-- input button -->		
+	<input id="send_msg_btn" type="submit" value="Send">															
 </form>
 {% endblock %}
