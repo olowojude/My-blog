@@ -1,0 +1,38 @@
+{% extends "ba/main.html" %}
+
+{% block content %}
+<div class="container">
+				<!-- post section -->
+				<div class="post">
+								<h1> {{post.title}} </h1>
+								<small> Posted at {{ post.date_posted }} </small>
+								<img src="{{post.image.url}}" class="my-2 card-img-top img-responsive img-fluid" style="'' alt="..."> 
+								<p class="content"> {{post.body}} </p>	
+				</div>				
+				<hr>
+				
+				<!-- comments section -->			
+				<div class="comments_container">
+								<h3>Comments </h3>
+								{% for comment in post_comments%}
+												<strong>{{comment.name}}</strong><br>
+			  							  	<p>{{comment.body}}</p><br>
+			  							  	<a href="{% url 'deleteComment' comment.id %}">Delete</a>
+												<small>Commented - {{comment.date_commented| timesince}} ago </small>
+												<hr>
+								{% empty %}
+												<p> No Comments </p>                      
+								{% endfor %}                                           												   
+				</div>
+				
+				<!-- To add a comment section -->
+				<div class="add_comment">
+								<h3 class="add_comment_heading"> Add Comment </h3>
+			  				  {% include 'ba/contactForm.html' %}
+				</div>								
+</div>
+
+<!-- Footer section -->
+
+{% include 'ba/footer.html' %}
+{% endblock %}

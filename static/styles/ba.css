@@ -1,0 +1,162 @@
+/* logo */
+.logo {
+    width: 38px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+/* to align the image in the home page */
+.image {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 100%;
+}
+.image img {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* post */
+.post-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+    
+/* contact section */
+.contact {
+				margin-top: 3rem;
+}
+
+.contact_me_heading  { 
+				overflow: hidden; 
+				text-align: center;		
+				font-size: 2rem; 
+				font-variant: small-caps;
+				color: white;
+				-webkit-text-stroke: 1px black;
+} 
+.contact_me_heading:before,
+.contact_me_heading:after { 
+				background-color: #000; 
+				content: ""; 
+				display: inline-block; 
+				height: 1px; 				 
+				vertical-align: middle; 
+				width: 50%; 
+} 
+.contact_me_heading:before { 
+				right: 0.5em; 
+				margin-left: -50%; 
+}
+.contact_me_heading:after { 
+				left: 0.5em; 				
+				margin-right: -50%; 
+}
+.contact_me_text {
+				margin: .5em;
+				padding: .5em;
+				font-size: 1rem;
+				text-align: center;
+				display: block;	
+				font-weight: 400;					
+}
+.text2 {
+				margin-top: 1em;
+}
+
+/* form section */
+.form_container {
+                color: ;
+				margin: 1em auto;
+				padding: 1em;
+				height: 280px;
+				width: 275px;
+				border-radius: 30px;
+				background: transparent;			
+				box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+.transparent {
+				background: transparent;
+				border-bottom: 2px solid #6a8eff;
+				color: black;
+}
+.form_holder {
+				margin: 2rem 0;
+}
+.form_container input {
+				border: 0;
+				width: 100%;
+				border-bottom: 1px solid #6a8eff;
+				font-size: 1rem;
+				
+}
+.form_container input:focus,
+.form_container textarea:focus {
+				outline: none;
+}
+#send_msg_btn {
+				padding: .8em 1em;
+				display: inline-block;			
+				color: #E6E6FA;
+				border-radius: 50px;
+				border-bottom: none;
+				margin: 1.5em auto;	
+				background: #00b3fc;
+}
+.icons_container {
+				display: flex;
+				padding: 1em;
+				margin: 0 2em;
+				justify-content: space-around;
+				color: black;
+}
+.icons_container a {
+				display: inline-block;
+				text-align: center;
+				
+}
+.icons_container 
+.fa-twitter-square, 
+.fa-instagram,
+.fa-github,
+.fa-linkedin,
+.fa-facebook-square {
+				width: 1rem;
+				height: 1rem;
+				font-size: 1.25rem;
+				border-radius: 2px;
+}
+
+/* footer section */
+hr {
+				
+				background-color: black;
+}
+.footer_container p {
+				margin: 0 .8em;
+				padding: .2em;
+				font-size: 1rem;
+				font-variant: normal;
+				text-align: center;
+				display: block;	
+				color: black;	
+}
+.footer_container .back_to_top {
+				text-decoration: underline;
+				display: inline-block;
+				font-size: 1rem;
+}
+
+/* detail post */
+.content {
+    text-align: justify;
+}
+/* comments section */
+.add_comment .add_comment_heading {    
+    text-align: center;
+    display: block;
+}    
