@@ -1,80 +1,95 @@
-/* logo */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+/* Nav */
+nav {
+	display: none;
+}
 .logo {
     width: 38px;
     height: 42px;
     border-radius: 50%;
 }
 
-/* to align the image in the home page */
-.image {
-    position: relative;
-    overflow: hidden;
-    padding-bottom: 100%;
+/* Home */
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-content: space-evenly;
+	padding: 3em 1.5em;
 }
-.image img {
-    position: absolute;
-    max-width: 100%;
-    max-height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.post-container {
+	width: 25em;
+	height: 15em;
+	position: relative;
+	border: 2px solid black;
+	margin: 2em auto;
+}
+.post-image {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+.post-body {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 80%;
+	padding: 1.5em;
+	background: black;
+	color: white;
 }
 
-/* post */
-.post-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
-    
 /* contact section */
 .contact {
-				margin-top: 3rem;
+	margin-top: 3rem;
 }
 
 .contact_me_heading  { 
-				overflow: hidden; 
-				text-align: center;		
-				font-size: 2rem; 
-				font-variant: small-caps;
-				color: white;
-				-webkit-text-stroke: 1px black;
+	overflow: hidden; 
+	text-align: center;		
+	font-size: 2rem; 
+	font-variant: small-caps;
+	color: white;
+	-webkit-text-stroke: 1px black;
 } 
 .contact_me_heading:before,
 .contact_me_heading:after { 
-				background-color: #000; 
-				content: ""; 
-				display: inline-block; 
-				height: 1px; 				 
-				vertical-align: middle; 
-				width: 50%; 
+	background-color: #000; 
+	content: ""; 
+	display: inline-block; 
+	height: 1px; 				 
+	vertical-align: middle; 
+	width: 50%; 
 } 
 .contact_me_heading:before { 
-				right: 0.5em; 
-				margin-left: -50%; 
+	right: 0.5em; 
+	margin-left: -50%; 
 }
 .contact_me_heading:after { 
-				left: 0.5em; 				
-				margin-right: -50%; 
+	left: 0.5em; 				
+	margin-right: -50%; 
 }
 .contact_me_text {
-				margin: .5em;
-				padding: .5em;
-				font-size: 1rem;
-				text-align: center;
-				display: block;	
-				font-weight: 400;					
+	margin: .5em;
+	padding: .5em;
+	font-size: 1rem;
+	text-align: center;
+	display: block;	
+	font-weight: 400;					
 }
 .text2 {
-				margin-top: 1em;
+	margin-top: 1em;
 }
 
 /* form section */
 .form_container {
-                color: ;
-				margin: 1em auto;
+	margin: 1em auto;
 				padding: 1em;
-				height: 280px;
-				width: 275px;
+				height: 100%;
+				width: 360px;
 				border-radius: 30px;
 				background: transparent;			
 				box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
@@ -104,7 +119,7 @@
 				color: #E6E6FA;
 				border-radius: 50px;
 				border-bottom: none;
-				margin: 1.5em auto;	
+				margin: 1em auto;	
 				background: #00b3fc;
 }
 .icons_container {
