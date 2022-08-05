@@ -1,13 +1,11 @@
-{% extends 'ba/main.html' %}
-
-{% block content %}
-				<div>
-								<form method="POST" action="">
-												{% csrf_token %}
-												<p>Are you sure you want to delete "{{comment.body}}"</p>
-												<input type="submit" value="Confirm">
-												<a href="{{request.META.HTTP_REFERER}}">Go back</a>
-								</form>
-				</div>
+{% extends 'ba/main.html' %} {% block content %}
+<div>
+  <form method="POST" action="">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{comment.body}}"</p>
+    <input type="submit" value="Confirm" />
+    <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+  </form>
+</div>
 
 {% endblock %}
