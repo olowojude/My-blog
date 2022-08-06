@@ -37,7 +37,86 @@ nav ul li {
  .search-btn {
 	border-bottom: 1px solid black;
  }
-/* Home */
+/* hero page */
+.hero-section {
+	margin-bottom: 5em;
+}
+.bold-text {
+	font-size: 2rem;
+	padding: 3em;
+	text-align: center;
+	font-variant: all-petite-caps;
+	position: relative;
+  }
+  .grid-items {
+	display: grid;
+	grid-template-columns: 3em 1fr 1fr 5em;
+	gap: 2em;
+  }
+  .vertical-links {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  flex-direction: column;
+		  width:  100%;
+		  height: 100%;
+		  margin-top: -12em;
+		  z-index: 1000;
+  }
+  .vertical-links a {
+		  writing-mode: vertical-rl;
+		  margin: 1.5em 0;
+		  color: black;
+		  font-size: 1em;
+		  font-variant: all-petite-caps;
+  }
+  .first-image {
+	width: ;
+	height: ;
+  }
+  .first-image img {
+	width: 100%;
+	overflow: hidden;
+	height: 100%;
+  }
+  .text-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding: 1em;
+  }
+  .text2 {
+	text-align: justify;
+  }
+  .fa {
+	display: inline;
+	position: absolute;
+  }
+  .left {
+	top: 0;
+	left: 30%;
+  }
+  .right {
+	bottom: 0;
+	right: 30%;
+  }
+  hr {
+	border: none;
+	height: 1px;
+	background-color: #333; 
+	margin: -1px;
+  }
+  .second-image {
+	width: 5em;
+	height: 20em;
+	background: #bd9166;
+	background-size-x: right;
+	margin-top: -12em;
+	z-index: 100;
+  }
+  
+
+/* post section */
 .container {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -75,7 +154,7 @@ nav ul li {
 	margin-top: 3rem;
 }
 
-.contact_me_heading  { 
+.heading  { 
 	overflow: hidden; 
 	text-align: center;		
 	font-size: 2rem; 
@@ -83,8 +162,8 @@ nav ul li {
 	color: white;
 	-webkit-text-stroke: 1px black;
 } 
-.contact_me_heading:before,
-.contact_me_heading:after { 
+.heading:before,
+.heading:after { 
 	background-color: #000; 
 	content: ""; 
 	display: inline-block; 
@@ -92,11 +171,11 @@ nav ul li {
 	vertical-align: middle; 
 	width: 50%; 
 } 
-.contact_me_heading:before { 
+.heading:before { 
 	right: 0.5em; 
 	margin-left: -50%; 
 }
-.contact_me_heading:after { 
+.heading:after { 
 	left: 0.5em; 				
 	margin-right: -50%; 
 }
