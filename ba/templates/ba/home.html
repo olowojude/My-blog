@@ -5,12 +5,13 @@
   <div href="{% url 'detailpost' post.slug%}" class="post-container">
     <img class="post-image" src="{{post.image.url}}" />
     <div class="post-body">
-      <h5 class="post-title">{{ post.title }}</h5>
-      <p class="post-text">{{post.content}}</p>
-      <a href="{% url 'detailpost' post.slug %}" class="read-more"
-        >Read more...</a
-      ><br />
-      <small class="catergory"> #{{post.category}} </small>
+      <h3 class="post-title">
+        <a href="{% url 'detailpost' post.slug %}" class="read-more"
+          >{{ post.title }}</a
+        >
+      </h3>
+      <br />
+      <small class="category"> #{{post.category}} </small>
     </div>
   </div>
   {% endfor %}

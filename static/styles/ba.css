@@ -2,17 +2,41 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: "poppins";
+	list-style: none;
+	text-decoration: none;
+	background-color: #d9ddde;
 }
 /* Nav */
 nav {
-	display: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1.5em 2em;
+}
+nav ul {
+	display: flex;
+	flex-direction: row;
+}
+nav ul li {
+	margin: 0 1em;
+	list-style: none;
+
 }
 .logo {
     width: 38px;
     height: 42px;
     border-radius: 50%;
 }
-
+.search {
+    border:none;
+    border-bottom: 1px solid black;
+    outline: none;
+ }
+ .search-btn {
+	border-bottom: 1px solid black;
+ }
 /* Home */
 .container {
 	display: grid;
@@ -21,25 +45,29 @@ nav {
 	padding: 3em 1.5em;
 }
 .post-container {
+	border-radius: 20px;
+	padding: 1.4em .7em;
 	width: 25em;
-	height: 15em;
-	position: relative;
-	border: 2px solid black;
-	margin: 2em auto;
+	margin: 0 auto;
 }
 .post-image {
+	border-radius: 15px;
 	width: 100%;
-	height: 100%;
-	object-fit: contain;
+    height: 18em;
+	object-fit: cover;
 }
 .post-body {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 80%;
-	padding: 1.5em;
-	background: black;
-	color: white;
+	color: black;
+	padding: 1em 0;
+}
+.post-title, .post-title, .read-more, .category {
+	padding: .2 0em;
+}
+.category {
+	background: #bd9166;
+	padding: 1em;
+	border-radius: 10px;
+	margin-top: ;
 }
 
 /* contact section */
