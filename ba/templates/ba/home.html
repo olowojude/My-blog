@@ -3,6 +3,14 @@
 
 <!--Articles Heading-->
 <h1 class="heading">Articles</h1>
+
+<form class="search" method="get" action="">
+  <input type="text" name="q" placeholder="Search Articles" />
+  <a class="search-btn" href="#"
+    ><i class="fa fa-search" aria-hidden="true"></i
+  ></a>
+</form>
+
 <section class="container">
   {% for post in posts %}
   <div href="{% url 'detailpost' post.slug%}" class="post-container">

@@ -7,6 +7,14 @@
 	text-decoration: none;
 	background-color: #d9ddde;
 }
+
+a, a:hover, a:focus, a:active {
+	text-decoration: none;
+	color: inherit;
+}
+hr {
+	color: black;
+}
 /* Nav */
 nav {
 	display: flex;
@@ -29,14 +37,6 @@ nav ul li {
     height: 42px;
     border-radius: 50%;
 }
-.search {
-    border:none;
-    border-bottom: 1px solid black;
-    outline: none;
- }
- .search-btn {
-	border-bottom: 1px solid black;
- }
 /* hero page */
 .hero-section {
 	margin-bottom: 5em;
@@ -69,10 +69,6 @@ nav ul li {
 		  color: black;
 		  font-size: 1em;
 		  font-variant: all-petite-caps;
-  }
-  .first-image {
-	width: ;
-	height: ;
   }
   .first-image img {
 	width: 100%;
@@ -110,13 +106,34 @@ nav ul li {
 	width: 5em;
 	height: 20em;
 	background: #bd9166;
-	background-size-x: right;
 	margin-top: -12em;
 	z-index: 100;
   }
   
 
 /* post section */
+.search {
+    width: 500px;
+    height: 50px;
+    margin: 3em auto;
+    background: white;
+    border-radius: 35px;
+    padding: 1em 2em;
+}
+.search input {
+        background: transparent;
+        width: 90%;
+		border: none;
+		outline: none;
+
+}
+input:focus {
+	outline: none ! important;
+}
+.fa-search {
+	background: white;
+}
+
 .container {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -146,7 +163,6 @@ nav ul li {
 	background: #bd9166;
 	padding: 1em;
 	border-radius: 10px;
-	margin-top: ;
 }
 
 /* contact section */
