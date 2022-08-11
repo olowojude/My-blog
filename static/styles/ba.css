@@ -119,6 +119,7 @@ nav ul li {
     background: white;
     border-radius: 35px;
     padding: 1em 2em;
+	outline: none;
 }
 .search input {
         background: transparent;
