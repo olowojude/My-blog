@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from django.conf import settings
 from django.conf.urls.static import static
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -19,7 +20,7 @@ class Post(models.Model):
     
     summary = models.CharField(max_length=100)
      
-    body = models.TextField(max_length=100000)
+    body = RichTextField(max_length=100000)
     
     slug = models.SlugField()
     
