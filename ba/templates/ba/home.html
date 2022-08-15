@@ -13,7 +13,7 @@
 
 <section class="container">
   {% for post in posts %}
-  <div href="{% url 'detailpost' post.slug%}" class="post-container">
+  <div class="post-container">
     <img class="post-image" src="{{post.image.url}}" />
     <div class="post-body">
       <h3 class="post-title">

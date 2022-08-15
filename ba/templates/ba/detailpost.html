@@ -3,7 +3,7 @@
   <!-- post section -->
   <div class="post">
     <h1>{{post.title}}</h1>
-    <small> Posted at {{ post.date_posted }} </small>
+    <small class="small"> Posted at {{ post.date_posted }} </small><br />
     <img
       src="{{post.image.url}}"
       class="my-2 card-img-top img-responsive img-fluid"
@@ -14,7 +14,7 @@
   <hr />
 
   <!-- comments section -->
-  <div class="comments_container">
+  <div class="comments-container">
     <h3>Comments</h3>
     {% for comment in post_comments%}
     <strong>{{comment.name}}</strong><br />
@@ -29,8 +29,8 @@
   </div>
 
   <!-- To add a comment section -->
-  <div class="add_comment">
-    <h3 class="add_comment_heading">Add Comment</h3>
+  <div class="add-comment">
+    <h3 class="add-comment-heading">Add Comment</h3>
     {% include 'ba/contactForm.html' %}
   </div>
 </div>
