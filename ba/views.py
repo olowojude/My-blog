@@ -8,14 +8,13 @@ from django.db.models import Q
 from .models import Post, Comments
 from django.core.mail import send_mail
 from django.conf import settings
-
 # Create your views here.
 
 
 
 #FOR THE HOMEPAGE 
 def home(request):
-    
+
     if "q" in request.GET:
         q = request.GET["q"]
         search = Q(Q(title__icontains=q) | Q(category__name__icontains=q))
@@ -47,6 +46,8 @@ def home(request):
         ["olowojude73@gmail.com"],
         fail_silently=False
         )    
+
+
         return HttpResponse("Thank you for contacting me, i'll get back to you shortly")
         
     context = {
