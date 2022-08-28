@@ -342,7 +342,20 @@ hr {
 	color: red;
 }
 
-
+/* email thank you page */
+.thank-you-page {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.thank-you-page p {
+	align-self: center;
+	margin: 0 2em;
+	font-size: 2em;
+}
+.thank-you-page p a {
+	text-decoration: underline;
+}
 /* media queries */
 @media(max-width: 850px) {
 	.bold-text {

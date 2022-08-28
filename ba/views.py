@@ -2,6 +2,8 @@
 #python manage.py syncdb
 
 
+from multiprocessing import context
+from turtle import pos
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Q
@@ -43,12 +45,10 @@ def home(request):
         send_mail("My Blog - Contact me",
         message,
         settings.EMAIL_HOST_USER,
-        ["olowojude73@gmail.com"],
+        ["judeolowo1@gmail.com"],
         fail_silently=False
         )    
-
-
-        return HttpResponse("Thank you for contacting me, i'll get back to you shortly")
+        return render(request, "ba/thank-you-page.html")
         
     context = {
     "posts": posts
@@ -97,3 +97,9 @@ def deleteComment(request, pk):
         #"post": post            
     }
     return render(request, "ba/delete.html", context)    
+
+
+# for email thank you page
+def thankYouPage(request):
+    return render(request, "ba/thank-you-page.html")  
+

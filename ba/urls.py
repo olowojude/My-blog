@@ -10,7 +10,9 @@ urlpatterns = [
     
     path("<slug:slug>/", views.detailpost, name = "detailpost"),
     
-    path("delete-comment/<str:pk>/", views.deleteComment, name="deleteComment")
+    path("delete-comment/<str:pk>/", views.deleteComment, name="deleteComment"),
+
+    path("email-sent/", views.thankYouPage, name = "thank-you-page"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
