@@ -351,10 +351,11 @@ hr {
 .thank-you-page p {
 	align-self: center;
 	margin: 0 2em;
-	font-size: 2em;
+	font-size: 1.5em;
 }
 .thank-you-page p a {
 	text-decoration: underline;
+	color: rgb(148, 119, 109);
 }
 /* media queries */
 @media(max-width: 850px) {
@@ -364,6 +365,16 @@ hr {
 	.grid-items {
 		margin-top: 2em;
 		grid-template-columns: 2em 1fr 1fr 2em;
+	}
+	.thank-you-page {
+		margin-top: 2em;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.thank-you-page p {
+		font-size: 1em;
+		margin-top: 2em;
 	}
 	/* home section */
 	.container {
