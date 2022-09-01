@@ -4,7 +4,7 @@
   <img src="{% static 'images/message-sent.png' %}" alt="" />
   <p class="thank-you-text">
     Thank you for contacting me, i'll get back to you shortly
-    <a href="{% url 'home' %}"> Go home </a>
+    <a href="{{request.META.HTTP_REFERER}}"> Go back </a>
   </p>
 </div>
 {% endblock %}

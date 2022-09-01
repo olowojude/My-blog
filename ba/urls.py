@@ -13,6 +13,9 @@ urlpatterns = [
     path("delete-comment/<str:pk>/", views.deleteComment, name="deleteComment"),
 
     path("email-sent/", views.thankYouPage, name = "thank-you-page"),
+
+    path("error/", views.notFound, name="notfound"),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()

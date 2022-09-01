@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}" />
+{% block content %}
+<div class="not-found-container">
+  <img
+    class="not-found-img"
+    src="{% static 'images/not-found.png' %}"
+    alt="404 error"
+    srcset=""
+  />
+  <p>
+    Something went wrong.
+    <a class="not-found-text" href="{{request.META.HTTP_REFERER}}"> Go back</a>
+  </p>
+</div>
+{% endblock %}
