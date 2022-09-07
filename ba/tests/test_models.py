@@ -34,17 +34,36 @@ class TestModels(TestCase):
         self.assertTrue(post.title, "Testing the Post model")
 
     def test_post_category(self):
-        post = Post.objects.get(slug="testing-the-post-model")
-        self.assertEqual(post.body, "i am testing the Post model")
+        post = Post.objects.get(title="Testing the Post model")
+        self.assertEqual(post.category.name, "Testing")
 
     def test_post_image(self):
-        post = Post.objects.get(slug="testing-the-post-model")
+        post = Post.objects.get(title="Testing the Post model")
         self.assertEqual(post.image, "https://bit.ly/3x4Wevw")
 
+    def test_post_body(self):
+        post = Post.objects.get(title="Testing the Post model")
+        self.assertEqual(post.body, "i am testing the Post model")
 
-    # def test_post_comment(self):
-    #     post = Post.objects.get(title="Testing the Post model")
-    #     self.assertTrue(post.comments.body, "i love writing tests")
-        
+
+
+    # testing the comments
+    def test_commentter_name(self):
+        comment = Comments.objects.get(name="user")
+        self.assertEqual(comment.name, "user")
+
+    def test_comments_body(self):
+        comment = Comments.objects.get(name="user")
+        self.assertEqual(comment.body, "i love writing tests")
+
+
+    def test_comment_post(self):
+        comment = Comments.objects.get(name="user")
+        self.assertEqual(comment.post.title,  "Testing the Post model")
+
+    def test_comment_email(self):
+        comment = Comments.objects.get(name="user")
+        self.assertEqual(comment.email,  "user@gmail.com")
+    
 
     
