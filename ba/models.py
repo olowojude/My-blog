@@ -17,8 +17,6 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
 
     image = models.ImageField(blank=True, null= True,upload_to="media/images/")   
-    
-    summary = models.CharField(max_length=100)
      
     body = RichTextField(max_length=100000)
     
@@ -37,6 +35,9 @@ class Post(models.Model):
         
     def summary(self):
         return self.summary
+
+    # def slug(self):
+    #     self.slugify(self.title)
 
     #def snippet(self):
         #return self.body[0:10]
