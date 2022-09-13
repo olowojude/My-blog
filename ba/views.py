@@ -47,7 +47,7 @@ def home(request):
         settings.EMAIL_HOST_USER,
         ["judeolowo1@gmail.com"],
         fail_silently=False
-        )   
+        )    
         return render(request, "ba/thank-you-page.html")
         
     context = {
@@ -97,7 +97,11 @@ def deleteComment(request, pk):
         #"post": post            
     }
     return render(request, "ba/delete.html", context)    
-  
+
+
+# for email thank you page
+def thankYouPage(request):
+    return render(request, "ba/thank-you-page.html")  
 
 def notFound(request):
     return render(request, "ba/not-found.html")
