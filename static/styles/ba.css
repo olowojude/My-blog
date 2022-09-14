@@ -200,6 +200,9 @@ input:focus {
 .post-title, .post-title, .read-more, .category {
 	padding: .2 0em;
 }
+.read-more {
+	color: #6a8eff;
+}
 .category {
 	background: #bd9166;
 	padding: 1em;
