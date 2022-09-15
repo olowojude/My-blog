@@ -103,5 +103,5 @@ def deleteComment(request, pk):
 def thankYouPage(request):
     return render(request, "ba/thank-you-page.html")  
 
-def notFound(request):
+def notFound(request, exception):
     return render(request, "ba/not-found.html")
