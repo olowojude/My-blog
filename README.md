@@ -1,2 +1,2 @@
 # My-personal-blog
- My personal blog, built with Django and Bootstrap
+ My personal blog, built with Django and SCSS
