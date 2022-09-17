@@ -1,9 +1,3 @@
-#python manage.py runserver
-#python manage.py syncdb
-
-
-from multiprocessing import context
-from turtle import pos
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Q
