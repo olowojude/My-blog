@@ -152,7 +152,7 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 
 # security
-CSRF_TRUSTED_ORIGINS = ['https://jude-olowo-blog.up.railway.app/']
+# CSRF_TRUSTED_ORIGINS = ['https://jude-olowo-blog.up.railway.app/']
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True 
 
