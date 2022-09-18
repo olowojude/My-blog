@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['jude-olowo-blog.up.railway.app/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -152,7 +152,7 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 
 # security
-CSRF_TRUSTED_ORIGINS = ['https://*..railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True 
 
