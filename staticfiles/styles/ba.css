@@ -484,6 +484,7 @@ hr {
 	  .first-image img {
 		margin: 1em;
 		width: 90%;
+		height: 90%;
 	  }
 	  .second-image {
 		position: absolute;
