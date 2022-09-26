@@ -524,6 +524,9 @@ hr {
 
 }
 @media(max-width: 380px) {
+	nav {
+		padding: 1em 1em;
+	}
 	.form_container {
 		width: 20em;
 	}
