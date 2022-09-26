@@ -179,7 +179,7 @@ input:focus {
 	/* padding: .7em .7em; */
 	padding: 2em 1em;
 	width: 20em;
-	margin: 0 auto;
+	margin: 1em auto;
 	-webkit-border-top-right-radius: 40px;
 	-webkit-border-bottom-left-radius: 40px;
 	-moz-border-radius-topright: 40px;
