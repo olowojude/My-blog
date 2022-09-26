@@ -217,7 +217,7 @@ input:focus {
 .heading  { 
 	overflow: hidden; 
 	text-align: center;		
-	font-size: 2em; 
+	font-size: 2rem; 
 	font-variant: all-petite-caps;
 	color: white;
 	-webkit-text-stroke: 1px black;
@@ -242,7 +242,7 @@ input:focus {
 .contact_me_text {
 	margin: .5em;
 	padding: .5em;
-	font-size: 1em;
+	font-size: 1rem;
 	text-align: center;
 	display: block;	
 	font-weight: 400;					
@@ -267,7 +267,7 @@ input:focus {
 				color: black;
 }
 .form_holder {
-				margin: 2em 0;
+				margin: 2rem 0;
 }
 .form_container input {
 				border: 0;
