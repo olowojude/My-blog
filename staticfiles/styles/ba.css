@@ -243,10 +243,10 @@ input:focus {
 .contact_me_text {
 	margin: .5em;
 	padding: .5em;
-	font-size: 1em;
+	/* font-size: 1em; */
 	text-align: center;
 	display: block;	
-	font-weight: 400;					
+	/* font-weight: 400;					 */
 }
 .text2 {
 	margin-top: 1em;
@@ -310,7 +310,7 @@ input:focus {
 .fa-facebook-square {
 				width: 1em;
 				height: 1em;
-				font-size: 1.25em;
+				/* font-size: 1.25em; */
 				border-radius: 2px;
 }
 
@@ -318,11 +318,12 @@ input:focus {
 .footer_container p {
 				margin: 0 .8em;
 				padding: .2em;
-				font-size: 1em;
+				/* font-size: 1em; */
 				font-variant: normal;
 				text-align: center;
 				display: block;	
 				color: black;	
+				text-size-adjust: none;
 }
 .footer_container .back_to_top {
 				text-decoration: underline;
