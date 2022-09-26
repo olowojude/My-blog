@@ -304,7 +304,7 @@ jQuery.fn = jQuery.prototype = {
 			if ( !jQuery.support.noCloneEvent && !jQuery.isXMLDoc(this) ) {
 				// IE copies events bound via attachEvent when
 				// using cloneNode. Calling detachEvent on the
-				// clone will also remove the events from the orignal
+				// clone will also emove the events from the orignal
 				// In order to get around this, we use innerHTML.
 				// Unfortunately, this means some modifications to
 				// attributes in IE that are actually only stored
@@ -489,7 +489,7 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	replaceWith: function( value ) {
-		return this.after( value ).remove();
+		return this.after( value ).emove();
 	},
 
 	eq: function( i ) {
@@ -552,7 +552,7 @@ function evalScript( i, elem ) {
 		jQuery.globalEval( elem.text || elem.textContent || elem.innerHTML || "" );
 
 	if ( elem.parentNode )
-		elem.parentNode.removeChild( elem );
+		elem.parentNode.emoveChild( elem );
 }
 
 function now(){
@@ -659,7 +659,7 @@ jQuery.extend({
 			// Use insertBefore instead of appendChild  to circumvent an IE6 bug.
 			// This arises when a base node is used (#2709).
 			head.insertBefore( script, head.firstChild );
-			head.removeChild( script );
+			head.emoveChild( script );
 		}
 	},
 
@@ -715,8 +715,8 @@ jQuery.extend({
 			});
 		},
 
-		// internal only, use removeClass("class")
-		remove: function( elem, classNames ) {
+		// internal only, use emoveClass("class")
+		emove: function( elem, classNames ) {
 			if (elem.nodeType == 1)
 				elem.className = classNames !== undefined ?
 					jQuery.grep(elem.className.split(/\s+/), function(className){
@@ -734,7 +734,7 @@ jQuery.extend({
 	// A method for quickly swapping in/out CSS properties to get correct calculations
 	swap: function( elem, options, callback ) {
 		var old = {};
-		// Remember the old values, and insert the new ones
+		// emember the old values, and insert the new ones
 		for ( var name in options ) {
 			old[ name ] = elem.style[ name ];
 			elem.style[ name ] = options[ name ];
@@ -827,7 +827,7 @@ jQuery.extend({
 			// If we're not dealing with a regular pixel number
 			// but a number that has a weird ending, we need to convert it to pixels
 			if ( !/^\d+(px)?$/i.test( ret ) && /^\d/.test( ret ) ) {
-				// Remember the original values
+				// emember the original values
 				var left = style.left, rsLeft = elem.runtimeStyle.left;
 
 				// Put in the new values to get a computed value out
@@ -914,7 +914,7 @@ jQuery.extend({
 				while ( wrap[0]-- )
 					div = div.lastChild;
 
-				// Remove IE's autoinserted <tbody> from table fragments
+				// emove IE's autoinserted <tbody> from table fragments
 				if ( !jQuery.support.tbody ) {
 
 					// String was a <table>, *may* have spurious <tbody>
@@ -929,7 +929,7 @@ jQuery.extend({
 
 					for ( var j = tbody.length - 1; j >= 0 ; --j )
 						if ( jQuery.nodeName( tbody[ j ], "tbody" ) && !tbody[ j ].childNodes.length )
-							tbody[ j ].parentNode.removeChild( tbody[ j ] );
+							tbody[ j ].parentNode.emoveChild( tbody[ j ] );
 
 					}
 
@@ -950,7 +950,7 @@ jQuery.extend({
 		if ( fragment ) {
 			for ( var i = 0; ret[i]; i++ ) {
 				if ( jQuery.nodeName( ret[i], "script" ) && (!ret[i].type || ret[i].type.toLowerCase() === "text/javascript") ) {
-					scripts.push( ret[i].parentNode ? ret[i].parentNode.removeChild( ret[i] ) : ret[i] );
+					scripts.push( ret[i].parentNode ? ret[i].parentNode.emoveChild( ret[i] ) : ret[i] );
 				} else {
 					if ( ret[i].nodeType === 1 )
 						ret.splice.apply( ret, [i + 1, 0].concat(jQuery.makeArray(ret[i].getElementsByTagName("script"))) );
@@ -1003,7 +1003,7 @@ jQuery.extend({
 					return elem.getAttributeNode( name ).nodeValue;
 
 				// elem.tabIndex doesn't always return the correct value when it hasn't been explicitly set
-				// http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
+				// http://fluidproject.org/blog/2008/01/09/getting-setting-and-emoving-tabindex-values-with-javascript/
 				if ( name == "tabIndex" ) {
 					var attributeNode = elem.getAttributeNode( "tabIndex" );
 					return attributeNode && attributeNode.specified
@@ -1216,45 +1216,45 @@ jQuery.each({
 });
 
 jQuery.each({
-	removeAttr: function( name ) {
+	emoveAttr: function( name ) {
 		jQuery.attr( this, name, "" );
 		if (this.nodeType == 1)
-			this.removeAttribute( name );
+			this.emoveAttribute( name );
 	},
 
 	addClass: function( classNames ) {
 		jQuery.className.add( this, classNames );
 	},
 
-	removeClass: function( classNames ) {
-		jQuery.className.remove( this, classNames );
+	emoveClass: function( classNames ) {
+		jQuery.className.emove( this, classNames );
 	},
 
 	toggleClass: function( classNames, state ) {
 		if( typeof state !== "boolean" )
 			state = !jQuery.className.has( this, classNames );
-		jQuery.className[ state ? "add" : "remove" ]( this, classNames );
+		jQuery.className[ state ? "add" : "emove" ]( this, classNames );
 	},
 
-	remove: function( selector ) {
+	emove: function( selector ) {
 		if ( !selector || jQuery.filter( selector, [ this ] ).length ) {
 			// Prevent memory leaks
 			jQuery( "*", this ).add([this]).each(function(){
-				jQuery.event.remove(this);
-				jQuery.removeData(this);
+				jQuery.event.emove(this);
+				jQuery.emoveData(this);
 			});
 			if (this.parentNode)
-				this.parentNode.removeChild( this );
+				this.parentNode.emoveChild( this );
 		}
 	},
 
 	empty: function() {
-		// Remove element nodes and prevent memory leaks
-		jQuery(this).children().remove();
+		// emove element nodes and prevent memory leaks
+		jQuery(this).children().emove();
 
-		// Remove any remaining nodes
+		// emove any emaining nodes
 		while ( this.firstChild )
-			this.removeChild( this.firstChild );
+			this.emoveChild( this.firstChild );
 	}
 }, function(name, fn){
 	jQuery.fn[ name ] = function(){
@@ -1297,42 +1297,42 @@ jQuery.extend({
 			id;
 	},
 
-	removeData: function( elem, name ) {
+	emoveData: function( elem, name ) {
 		elem = elem == window ?
 			windowData :
 			elem;
 
 		var id = elem[ expando ];
 
-		// If we want to remove a specific section of the element's data
+		// If we want to emove a specific section of the element's data
 		if ( name ) {
 			if ( jQuery.cache[ id ] ) {
-				// Remove the section of cache data
+				// emove the section of cache data
 				delete jQuery.cache[ id ][ name ];
 
-				// If we've removed all the data, remove the element's cache
+				// If we've emoved all the data, emove the element's cache
 				name = "";
 
 				for ( name in jQuery.cache[ id ] )
 					break;
 
 				if ( !name )
-					jQuery.removeData( elem );
+					jQuery.emoveData( elem );
 			}
 
-		// Otherwise, we want to remove all of the element's data
+		// Otherwise, we want to emove all of the element's data
 		} else {
 			// Clean up the element expando
 			try {
 				delete elem[ expando ];
 			} catch(e){
-				// IE has trouble directly removing the expando
-				// but it's ok with using removeAttribute
-				if ( elem.removeAttribute )
-					elem.removeAttribute( expando );
+				// IE has trouble directly emoving the expando
+				// but it's ok with using emoveAttribute
+				if ( elem.emoveAttribute )
+					elem.emoveAttribute( expando );
 			}
 
-			// Completely remove the data cache
+			// Completely emove the data cache
 			delete jQuery.cache[ id ];
 		}
 	},
@@ -1384,9 +1384,9 @@ jQuery.fn.extend({
 			});
 	},
 
-	removeData: function( key ){
+	emoveData: function( key ){
 		return this.each(function(){
-			jQuery.removeData( this, key );
+			jQuery.emoveData( this, key );
 		});
 	},
 	queue: function(type, data){
@@ -2135,7 +2135,7 @@ if ( document.documentElement.compareDocumentPosition ) {
 		id = "script" + (new Date).getTime();
 	form.innerHTML = "<input name='" + id + "'/>";
 
-	// Inject it into the root element, check its status, and remove it quickly
+	// Inject it into the root element, check its status, and emove it quickly
 	var root = document.documentElement;
 	root.insertBefore( form, root.firstChild );
 
@@ -2155,7 +2155,7 @@ if ( document.documentElement.compareDocumentPosition ) {
 		};
 	}
 
-	root.removeChild( form );
+	root.emoveChild( form );
 })();
 
 (function(){
@@ -2518,7 +2518,7 @@ jQuery.event = {
 	global: {},
 
 	// Detach an event or set of events from an element
-	remove: function(elem, types, handler) {
+	emove: function(elem, types, handler) {
 		// don't do events on text and comment nodes
 		if ( elem.nodeType == 3 || elem.nodeType == 8 )
 			return;
@@ -2529,7 +2529,7 @@ jQuery.event = {
 			// Unbind all events for the element
 			if ( types === undefined || (typeof types === "string" && types.charAt(0) == ".") )
 				for ( var type in events )
-					this.remove( elem, type + (types || "") );
+					this.emove( elem, type + (types || "") );
 			else {
 				// types is actually an event object here
 				if ( types.type ) {
@@ -2546,26 +2546,26 @@ jQuery.event = {
 					var namespace = RegExp("(^|\\.)" + namespaces.slice().sort().join(".*\\.") + "(\\.|$)");
 
 					if ( events[type] ) {
-						// remove the given handler for the given type
+						// emove the given handler for the given type
 						if ( handler )
 							delete events[type][handler.guid];
 
-						// remove all handlers for the given type
+						// emove all handlers for the given type
 						else
 							for ( var handle in events[type] )
-								// Handle the removal of namespaced events
+								// Handle the emoval of namespaced events
 								if ( namespace.test(events[type][handle].type) )
 									delete events[type][handle];
 									
 						if ( jQuery.event.specialAll[type] )
 							jQuery.event.specialAll[type].teardown.call(elem, namespaces);
 
-						// remove generic event handler if no more handlers exist
+						// emove generic event handler if no more handlers exist
 						for ( ret in events[type] ) break;
 						if ( !ret ) {
 							if ( !jQuery.event.special[type] || jQuery.event.special[type].teardown.call(elem, namespaces) === false ) {
-								if (elem.removeEventListener)
-									elem.removeEventListener(type, jQuery.data(elem, "handle"), false);
+								if (elem.emoveEventListener)
+									elem.emoveEventListener(type, jQuery.data(elem, "handle"), false);
 								else if (elem.detachEvent)
 									elem.detachEvent("on" + type, jQuery.data(elem, "handle"));
 							}
@@ -2576,13 +2576,13 @@ jQuery.event = {
 				});
 			}
 
-			// Remove the expando if it's no longer used
+			// emove the expando if it's no longer used
 			for ( ret in events ) break;
 			if ( !ret ) {
 				var handle = jQuery.data( elem, "handle" );
 				if ( handle ) handle.elem = null;
-				jQuery.removeData( elem, "events" );
-				jQuery.removeData( elem, "handle" );
+				jQuery.emoveData( elem, "events" );
+				jQuery.emoveData( elem, "handle" );
 			}
 		}
 	},
@@ -2686,7 +2686,7 @@ jQuery.event = {
 			// Filter the functions by class
 			if ( all || namespace.test(handler.type) ) {
 				// Pass in a reference to the handler function itself
-				// So that we can later remove it
+				// So that we can later emove it
 				event.handler = handler;
 				event.data = handler.data;
 
@@ -2760,7 +2760,7 @@ jQuery.event = {
 
 	proxy: function( fn, proxy ){
 		proxy = proxy || function(){ return fn.apply(this, arguments); };
-		// Set the guid of unique handler to the same of original handler, so it can be removed
+		// Set the guid of unique handler to the same of original handler, so it can be emoved
 		proxy.guid = fn.guid = fn.guid || proxy.guid || this.guid++;
 		// So proxy can be declared as an argument
 		return proxy;
@@ -2781,15 +2781,15 @@ jQuery.event = {
 			},
 			teardown:  function( namespaces ){
 				if ( namespaces.length ) {
-					var remove = 0, name = RegExp("(^|\\.)" + namespaces[0] + "(\\.|$)");
+					var emove = 0, name = RegExp("(^|\\.)" + namespaces[0] + "(\\.|$)");
 					
 					jQuery.each( (jQuery.data(this, "events").live || {}), function(){
 						if ( name.test(this.type) )
-							remove++;
+							emove++;
 					});
 					
-					if ( remove < 1 )
-						jQuery.event.remove( this, namespaces[0], liveHandler );
+					if ( emove < 1 )
+						jQuery.event.emove( this, namespaces[0], liveHandler );
 				}
 			}
 		}
@@ -2886,7 +2886,7 @@ jQuery.each({
 			jQuery.event.add( this, orig, withinElement, fix );
 		},
 		teardown: function(){
-			jQuery.event.remove( this, orig, withinElement );
+			jQuery.event.emove( this, orig, withinElement );
 		}
 	};			   
 });
@@ -2910,7 +2910,7 @@ jQuery.fn.extend({
 
 	unbind: function( type, fn ) {
 		return this.each(function(){
-			jQuery.event.remove( this, type, fn );
+			jQuery.event.emove( this, type, fn );
 		});
 	},
 
@@ -2963,7 +2963,7 @@ jQuery.fn.extend({
 			// Execute the function immediately
 			fn.call( document, jQuery );
 
-		// Otherwise, remember the function for later
+		// Otherwise, emember the function for later
 		else
 			// Add the function to the wait list
 			jQuery.readyList.push( fn );
@@ -3022,7 +3022,7 @@ jQuery.extend({
 	ready: function() {
 		// Make sure that the DOM is not already loaded
 		if ( !jQuery.isReady ) {
-			// Remember that the DOM is ready
+			// emember that the DOM is ready
 			jQuery.isReady = true;
 
 			// If there are functions bound, to execute
@@ -3052,7 +3052,7 @@ function bindReady(){
 	if ( document.addEventListener ) {
 		// Use the handy event callback
 		document.addEventListener( "DOMContentLoaded", function(){
-			document.removeEventListener( "DOMContentLoaded", arguments.callee, false );
+			document.emoveEventListener( "DOMContentLoaded", arguments.callee, false );
 			jQuery.ready();
 		}, false );
 
@@ -3107,7 +3107,7 @@ jQuery( window ).bind( 'unload', function(){
 	for ( var id in jQuery.cache )
 		// Skip the window
 		if ( id != 1 && jQuery.cache[ id ].handle )
-			jQuery.event.remove( jQuery.cache[ id ].handle.elem );
+			jQuery.event.emove( jQuery.cache[ id ].handle.elem );
 }); 
 (function(){
 
@@ -3183,7 +3183,7 @@ jQuery( window ).bind( 'unload', function(){
 		delete window[ id ];
 	}
 
-	root.removeChild( script );
+	root.emoveChild( script );
 
 	if ( div.attachEvent && div.fireEvent ) {
 		div.attachEvent("onclick", function(){
@@ -3203,7 +3203,7 @@ jQuery( window ).bind( 'unload', function(){
 
 		document.body.appendChild( div );
 		jQuery.boxModel = jQuery.support.boxModel = div.offsetWidth === 2;
-		document.body.removeChild( div ).style.display = 'none';
+		document.body.emoveChild( div ).style.display = 'none';
 	});
 })();
 
@@ -3254,7 +3254,7 @@ jQuery.fn.extend({
 
 		var self = this;
 
-		// Request the remote document
+		// Request the emote document
 		jQuery.ajax({
 			url: url,
 			type: type,
@@ -3267,7 +3267,7 @@ jQuery.fn.extend({
 					self.html( selector ?
 						// Create a dummy div to hold the results
 						jQuery("<div/>")
-							// inject the contents of the document in, removing the scripts
+							// inject the contents of the document in, emoving the scripts
 							// to avoid any 'Permission Denied' errors in IE
 							.append(res.responseText.replace(/<script(.|\s)*?\/script>/g, ""))
 
@@ -3438,7 +3438,7 @@ jQuery.extend({
 				window[ jsonp ] = undefined;
 				try{ delete window[ jsonp ]; } catch(e){}
 				if ( head )
-					head.removeChild( script );
+					head.emoveChild( script );
 			};
 		}
 
@@ -3468,7 +3468,7 @@ jQuery.extend({
 		// Matches an absolute URL, and saves the domain
 		var parts = /^(\w+:)?\/\/([^\/?#]+)/.exec( s.url );
 
-		// If we're requesting a remote document
+		// If we're requesting a emote document
 		// and trying to load JSON or Script with a GET
 		if ( s.dataType == "script" && type == "GET" && parts
 			&& ( parts[1] && parts[1] != location.protocol || parts[2] != location.host )){
@@ -3493,7 +3493,7 @@ jQuery.extend({
 
 						// Handle memory leak in IE
 						script.onload = script.onreadystatechange = null;
-						head.removeChild( script );
+						head.emoveChild( script );
 					}
 				};
 			}
@@ -3551,7 +3551,7 @@ jQuery.extend({
 
 		// Wait for a response to come back
 		var onreadystatechange = function(isTimeout){
-			// The request was aborted, clear the interval and decrement jQuery.active
+			// The request was aborted, clear the interval and decement jQuery.active
 			if (xhr.readyState == 0) {
 				if (ival) {
 					// clear poll interval
@@ -3803,7 +3803,7 @@ jQuery.fn.extend({
 						if ( display === "none" )
 							display = "block";
 						
-						elem.remove();
+						elem.emove();
 						
 						elemdisplay[ tagName ] = display;
 					}
@@ -4067,7 +4067,7 @@ jQuery.fx.prototype = {
 
 	// Simple 'show' function
 	show: function(){
-		// Remember where we started, so that we can go back to it later
+		// emember where we started, so that we can go back to it later
 		this.options.orig[this.prop] = jQuery.attr( this.elem.style, this.prop );
 		this.options.show = true;
 
@@ -4082,7 +4082,7 @@ jQuery.fx.prototype = {
 
 	// Simple 'hide' function
 	hide: function(){
-		// Remember where we started, so that we can go back to it later
+		// emember where we started, so that we can go back to it later
 		this.options.orig[this.prop] = jQuery.attr( this.elem.style, this.prop );
 		this.options.hide = true;
 
@@ -4241,7 +4241,7 @@ jQuery.offset = {
 		this.doesNotIncludeMarginInBodyOffset = (body.offsetTop === 0);
 		body.style.marginTop = bodyMarginTop;
 
-		body.removeChild(container);
+		body.emoveChild(container);
 		this.initialized = true;
 	},
 

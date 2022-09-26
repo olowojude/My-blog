@@ -18,8 +18,8 @@ Requires core.js and SelectBox.js.
 
             for (const p of from_box.parentNode.getElementsByTagName('p')) {
                 if (p.classList.contains("info")) {
-                    // Remove <p class="info">, because it just gets in the way.
-                    from_box.parentNode.removeChild(p);
+                    // emove <p class="info">, because it just gets in the way.
+                    from_box.parentNode.emoveChild(p);
                 } else if (p.classList.contains("help")) {
                     // Move help text up to the top so it isn't below the select
                     // boxes or wrapped off on the side to the right of the add
@@ -74,8 +74,8 @@ Requires core.js and SelectBox.js.
             selector_chooser.className = 'selector-chooser';
             const add_link = quickElement('a', quickElement('li', selector_chooser), gettext('Choose'), 'title', gettext('Choose'), 'href', '#', 'id', field_id + '_add_link');
             add_link.className = 'selector-add';
-            const remove_link = quickElement('a', quickElement('li', selector_chooser), gettext('Remove'), 'title', gettext('Remove'), 'href', '#', 'id', field_id + '_remove_link');
-            remove_link.className = 'selector-remove';
+            const emove_link = quickElement('a', quickElement('li', selector_chooser), gettext('emove'), 'title', gettext('emove'), 'href', '#', 'id', field_id + '_emove_link');
+            emove_link.className = 'selector-emove';
 
             // <div class="selector-chosen">
             const selector_chosen = quickElement('div', selector_div);
@@ -86,9 +86,9 @@ Requires core.js and SelectBox.js.
                 'class', 'help help-tooltip help-icon',
                 'title', interpolate(
                     gettext(
-                        'This is the list of chosen %s. You may remove some by ' +
+                        'This is the list of chosen %s. You may emove some by ' +
                         'selecting them in the box below and then clicking the ' +
-                        '"Remove" arrow between the two boxes.'
+                        '"emove" arrow between the two boxes.'
                     ),
                     [field_name]
                 )
@@ -96,7 +96,7 @@ Requires core.js and SelectBox.js.
 
             const to_box = quickElement('select', selector_chosen, '', 'id', field_id + '_to', 'multiple', '', 'size', from_box.size, 'name', from_box.name);
             to_box.className = 'filtered';
-            const clear_all = quickElement('a', selector_chosen, gettext('Remove all'), 'title', interpolate(gettext('Click to remove all chosen %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_remove_all_link');
+            const clear_all = quickElement('a', selector_chosen, gettext('emove all'), 'title', interpolate(gettext('Click to emove all chosen %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_emove_all_link');
             clear_all.className = 'selector-clearall';
 
             from_box.name = from_box.name + '_old';
@@ -115,7 +115,7 @@ Requires core.js and SelectBox.js.
             add_link.addEventListener('click', function(e) {
                 move_selection(e, this, SelectBox.move, field_id + '_from', field_id + '_to');
             });
-            remove_link.addEventListener('click', function(e) {
+            emove_link.addEventListener('click', function(e) {
                 move_selection(e, this, SelectBox.move, field_id + '_to', field_id + '_from');
             });
             clear_all.addEventListener('click', function(e) {
@@ -186,10 +186,10 @@ Requires core.js and SelectBox.js.
             const to = document.getElementById(field_id + '_to');
             // Active if at least one item is selected
             document.getElementById(field_id + '_add_link').classList.toggle('active', SelectFilter.any_selected(from));
-            document.getElementById(field_id + '_remove_link').classList.toggle('active', SelectFilter.any_selected(to));
+            document.getElementById(field_id + '_emove_link').classList.toggle('active', SelectFilter.any_selected(to));
             // Active if the corresponding box isn't empty
             document.getElementById(field_id + '_add_all_link').classList.toggle('active', from.querySelector('option'));
-            document.getElementById(field_id + '_remove_all_link').classList.toggle('active', to.querySelector('option'));
+            document.getElementById(field_id + '_emove_all_link').classList.toggle('active', to.querySelector('option'));
         },
         filter_key_press: function(event, field_id) {
             const from = document.getElementById(field_id + '_from');

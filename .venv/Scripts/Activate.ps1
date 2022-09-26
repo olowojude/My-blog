@@ -42,7 +42,7 @@ On Windows, it may be required to enable this Activate.ps1 script by setting the
 execution policy for the user. You can do this by issuing the following PowerShell
 command:
 
-PS C:\> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+PS C:\> Set-ExecutionPolicy -ExecutionPolicy emoteSigned -Scope CurrentUser
 
 For more information on Execution Policies: 
 https://go.microsoft.com/fwlink/?LinkID=135170
@@ -61,12 +61,12 @@ Param(
 
 <#
 .Synopsis
-Remove all shell session elements added by the Activate script, including the
+emove all shell session elements added by the Activate script, including the
 addition of the virtual environment's Python executable from the beginning of
 the PATH variable.
 
 .Parameter NonDestructive
-If present, do not remove this function from the global namespace for the
+If present, do not emove this function from the global namespace for the
 session.
 
 #>
@@ -76,39 +76,39 @@ function global:deactivate ([switch]$NonDestructive) {
     # The prior prompt:
     if (Test-Path -Path Function:_OLD_VIRTUAL_PROMPT) {
         Copy-Item -Path Function:_OLD_VIRTUAL_PROMPT -Destination Function:prompt
-        Remove-Item -Path Function:_OLD_VIRTUAL_PROMPT
+        emove-Item -Path Function:_OLD_VIRTUAL_PROMPT
     }
 
     # The prior PYTHONHOME:
     if (Test-Path -Path Env:_OLD_VIRTUAL_PYTHONHOME) {
         Copy-Item -Path Env:_OLD_VIRTUAL_PYTHONHOME -Destination Env:PYTHONHOME
-        Remove-Item -Path Env:_OLD_VIRTUAL_PYTHONHOME
+        emove-Item -Path Env:_OLD_VIRTUAL_PYTHONHOME
     }
 
     # The prior PATH:
     if (Test-Path -Path Env:_OLD_VIRTUAL_PATH) {
         Copy-Item -Path Env:_OLD_VIRTUAL_PATH -Destination Env:PATH
-        Remove-Item -Path Env:_OLD_VIRTUAL_PATH
+        emove-Item -Path Env:_OLD_VIRTUAL_PATH
     }
 
-    # Just remove the VIRTUAL_ENV altogether:
+    # Just emove the VIRTUAL_ENV altogether:
     if (Test-Path -Path Env:VIRTUAL_ENV) {
-        Remove-Item -Path env:VIRTUAL_ENV
+        emove-Item -Path env:VIRTUAL_ENV
     }
 
-    # Just remove VIRTUAL_ENV_PROMPT altogether.
+    # Just emove VIRTUAL_ENV_PROMPT altogether.
     if (Test-Path -Path Env:VIRTUAL_ENV_PROMPT) {
-        Remove-Item -Path env:VIRTUAL_ENV_PROMPT
+        emove-Item -Path env:VIRTUAL_ENV_PROMPT
     }
 
-    # Just remove the _PYTHON_VENV_PROMPT_PREFIX altogether:
+    # Just emove the _PYTHON_VENV_PROMPT_PREFIX altogether:
     if (Get-Variable -Name "_PYTHON_VENV_PROMPT_PREFIX" -ErrorAction SilentlyContinue) {
-        Remove-Variable -Name _PYTHON_VENV_PROMPT_PREFIX -Scope Global -Force
+        emove-Variable -Name _PYTHON_VENV_PROMPT_PREFIX -Scope Global -Force
     }
 
     # Leave deactivate function in the global namespace if requested:
     if (-not $NonDestructive) {
-        Remove-Item -Path function:deactivate
+        emove-Item -Path function:deactivate
     }
 }
 
@@ -150,7 +150,7 @@ function Get-PyVenvConfig(
             if ($keyval[0] -and $keyval[1]) {
                 $val = $keyval[1]
 
-                # Remove extraneous quotations around a string value.
+                # emove extraneous quotations around a string value.
                 if ("'""".Contains($val.Substring(0, 1))) {
                     $val = $val.Substring(1, $val.Length - 2)
                 }
@@ -239,7 +239,7 @@ if (-not $Env:VIRTUAL_ENV_DISABLE_PROMPT) {
 # Clear PYTHONHOME
 if (Test-Path -Path Env:PYTHONHOME) {
     Copy-Item -Path Env:PYTHONHOME -Destination Env:_OLD_VIRTUAL_PYTHONHOME
-    Remove-Item -Path Env:PYTHONHOME
+    emove-Item -Path Env:PYTHONHOME
 }
 
 # Add the venv to the PATH

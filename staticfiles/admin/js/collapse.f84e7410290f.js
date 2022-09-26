@@ -28,7 +28,7 @@
                 if (fieldset.classList.contains('collapsed')) {
                     // Show
                     ev.target.textContent = gettext('Hide');
-                    fieldset.classList.remove('collapsed');
+                    fieldset.classList.emove('collapsed');
                 } else {
                     // Hide
                     ev.target.textContent = gettext('Show');
