@@ -155,7 +155,7 @@ nav ul li a:hover {
         width: 90%;
 		border: none;
 		outline: none;
-
+		width: 1em;
 }
 input:focus {
 	outline: none ! important;
@@ -243,7 +243,6 @@ input:focus {
 .contact_me_text {
 	margin: .5em;
 	padding: .5em;
-	font-size: 1em;
 	text-align: center;
 	display: block;	
 	font-weight: 400;					
@@ -310,7 +309,7 @@ input:focus {
 .fa-facebook-square {
 				width: 1em;
 				height: 1em;
-				font-size: 1.25em;
+				/* font-size: 1.25em; */
 				border-radius: 2px;
 }
 
