@@ -4,11 +4,13 @@
   <div class="post">
     <h1>{{post.title}}</h1>
     <small class="small"> Posted at {{ post.date_posted }} </small><br />
+    {% if request.user.image %}
     <img
       src="{{post.image.url}}"
       class="my-2 card-img-top img-responsive img-fluid"
       alt="..."
     />
+    {% endif %}
     <p class="content">{{post.body |safe}}</p>
   </div>
   <hr />

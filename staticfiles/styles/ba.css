@@ -174,7 +174,8 @@ input:focus {
 	padding: 3em 1.5em;
 }
 .post-container {
-	padding: .7em .7em;
+	/* padding: .7em .7em; */
+	padding: 2em 1em;
 	width: 20em;
 	margin: 0 auto;
 	-webkit-border-top-right-radius: 40px;
