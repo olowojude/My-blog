@@ -6,6 +6,8 @@
 	list-style: none;
 	text-decoration: none;
 	background-color: #d9ddde;
+	-webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 a, a:hover, a:focus, a:active {
@@ -211,7 +213,7 @@ input:focus {
 }
 
 /* contact section */
-.contact {
+#contact {
 	margin-top: 3em;
 	font-size: 1em;
 }
