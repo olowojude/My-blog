@@ -417,7 +417,7 @@ var requirejs, require, define;
         callback = callback || function () {};
 
         //If relName is a function, it is an errback handler,
-        //so emove it.
+        //so remove it.
         if (typeof relName === 'function') {
             relName = forceSync;
             forceSync = alt;
@@ -826,14 +826,14 @@ S2.define('select2/utils',[
     }
   };
 
-  Utils.emoveData = function (element) {
-    // emoves all cached items for a specified element.
+  Utils.RemoveData = function (element) {
+    // Removes all cached items for a specified element.
     var id = Utils.GetUniqueElementId(element);
     if (Utils.__cache[id] != null) {
       delete Utils.__cache[id];
     }
 
-    element.emoveAttribute('data-select2-id');
+    element.removeAttribute('data-select2-id');
   };
 
   return Utils;
@@ -896,7 +896,7 @@ S2.define('select2/results',[
   };
 
   Results.prototype.hideMessages = function () {
-    this.$results.find('.select2-results__message').emove();
+    this.$results.find('.select2-results__message').remove();
   };
 
   Results.prototype.append = function (data) {
@@ -1004,7 +1004,7 @@ S2.define('select2/results',[
   };
 
   Results.prototype.hideLoading = function () {
-    this.$results.find('.loading-results').emove();
+    this.$results.find('.loading-results').remove();
   };
 
   Results.prototype.option = function (data) {
@@ -1153,7 +1153,7 @@ S2.define('select2/results',[
       // When the dropdown is closed, aria-expended="false"
       self.$results.attr('aria-expanded', 'false');
       self.$results.attr('aria-hidden', 'true');
-      self.$results.emoveAttr('aria-activedescendant');
+      self.$results.removeAttr('aria-activedescendant');
     });
 
     container.on('results:toggle', function () {
@@ -1312,7 +1312,7 @@ S2.define('select2/results',[
       var data = Utils.GetData(this, 'data');
 
       self.getHighlightedResults()
-          .emoveClass('select2-results__option--highlighted');
+          .removeClass('select2-results__option--highlighted');
 
       self.trigger('results:focus', {
         data: data,
@@ -1329,7 +1329,7 @@ S2.define('select2/results',[
   };
 
   Results.prototype.destroy = function () {
-    this.$results.emove();
+    this.$results.remove();
   };
 
   Results.prototype.ensureHighlightVisible = function () {
@@ -1481,8 +1481,8 @@ S2.define('select2/selection/base',[
     container.on('close', function () {
       // When the dropdown is closed, aria-expanded="false"
       self.$selection.attr('aria-expanded', 'false');
-      self.$selection.emoveAttr('aria-activedescendant');
-      self.$selection.emoveAttr('aria-owns');
+      self.$selection.removeAttr('aria-activedescendant');
+      self.$selection.removeAttr('aria-owns');
 
       self.$selection.trigger('focus');
 
@@ -1649,7 +1649,7 @@ S2.define('select2/selection/single',[
   SingleSelection.prototype.clear = function () {
     var $rendered = this.$selection.find('.select2-selection__rendered');
     $rendered.empty();
-    $rendered.emoveAttr('title'); // clear tooltip on empty
+    $rendered.removeAttr('title'); // clear tooltip on empty
   };
 
   SingleSelection.prototype.display = function (data, container) {
@@ -1681,7 +1681,7 @@ S2.define('select2/selection/single',[
     if (title) {
       $rendered.attr('title', title);
     } else {
-      $rendered.emoveAttr('title');
+      $rendered.removeAttr('title');
     }
   };
 
@@ -1724,15 +1724,15 @@ S2.define('select2/selection/multiple',[
 
     this.$selection.on(
       'click',
-      '.select2-selection__choice__emove',
+      '.select2-selection__choice__remove',
       function (evt) {
         // Ignore the event if it is disabled
         if (self.isDisabled()) {
           return;
         }
 
-        var $emove = $(this);
-        var $selection = $emove.parent();
+        var $remove = $(this);
+        var $selection = $remove.parent();
 
         var data = Utils.GetData($selection[0], 'data');
 
@@ -1747,7 +1747,7 @@ S2.define('select2/selection/multiple',[
   MultipleSelection.prototype.clear = function () {
     var $rendered = this.$selection.find('.select2-selection__rendered');
     $rendered.empty();
-    $rendered.emoveAttr('title');
+    $rendered.removeAttr('title');
   };
 
   MultipleSelection.prototype.display = function (data, container) {
@@ -1760,7 +1760,7 @@ S2.define('select2/selection/multiple',[
   MultipleSelection.prototype.selectionContainer = function () {
     var $container = $(
       '<li class="select2-selection__choice">' +
-        '<span class="select2-selection__choice__emove" role="presentation">' +
+        '<span class="select2-selection__choice__remove" role="presentation">' +
           '&times;' +
         '</span>' +
       '</li>'
@@ -1830,7 +1830,7 @@ S2.define('select2/selection/placeholder',[
 
     $placeholder.html(this.display(placeholder));
     $placeholder.addClass('select2-selection__placeholder')
-                .emoveClass('select2-selection__choice');
+                .removeClass('select2-selection__choice');
 
     return $placeholder;
   };
@@ -1954,16 +1954,16 @@ S2.define('select2/selection/allowClear',[
       return;
     }
 
-    var emoveAll = this.options.get('translations').get('emoveAllItems');
+    var removeAll = this.options.get('translations').get('removeAllItems');
 
-    var $emove = $(
-      '<span class="select2-selection__clear" title="' + emoveAll() +'">' +
+    var $remove = $(
+      '<span class="select2-selection__clear" title="' + removeAll() +'">' +
         '&times;' +
       '</span>'
     );
-    Utils.StoreData($emove[0], 'data', data);
+    Utils.StoreData($remove[0], 'data', data);
 
-    this.$selection.find('.select2-selection__rendered').prepend($emove);
+    this.$selection.find('.select2-selection__rendered').prepend($remove);
   };
 
   return AllowClear;
@@ -2011,8 +2011,8 @@ S2.define('select2/selection/search',[
 
     container.on('close', function () {
       self.$search.val('');
-      self.$search.emoveAttr('aria-controls');
-      self.$search.emoveAttr('aria-activedescendant');
+      self.$search.removeAttr('aria-controls');
+      self.$search.removeAttr('aria-activedescendant');
       self.$search.trigger('focus');
     });
 
@@ -2034,7 +2034,7 @@ S2.define('select2/selection/search',[
       if (params.data._resultId) {
         self.$search.attr('aria-activedescendant', params.data._resultId);
       } else {
-        self.$search.emoveAttr('aria-activedescendant');
+        self.$search.removeAttr('aria-activedescendant');
       }
     });
 
@@ -2062,7 +2062,7 @@ S2.define('select2/selection/search',[
         if ($previousChoice.length > 0) {
           var item = Utils.GetData($previousChoice[0], 'data');
 
-          self.searchemoveChoice(item);
+          self.searchRemoveChoice(item);
 
           evt.preventDefault();
         }
@@ -2178,7 +2178,7 @@ S2.define('select2/selection/search',[
     this._keyUpPrevented = false;
   };
 
-  Search.prototype.searchemoveChoice = function (decorated, item) {
+  Search.prototype.searchRemoveChoice = function (decorated, item) {
     this.trigger('unselect', {
       data: item
     });
@@ -3302,10 +3302,10 @@ S2.define('select2/data/select',[
   };
 
   SelectAdapter.prototype.destroy = function () {
-    // emove anything added to child elements
+    // Remove anything added to child elements
     this.$element.find('*').each(function () {
-      // emove any custom data set by Select2
-      Utils.emoveData(this);
+      // Remove any custom data set by Select2
+      Utils.RemoveData(this);
     });
   };
 
@@ -3700,7 +3700,7 @@ S2.define('select2/data/tags',[
   Tags.prototype.query = function (decorated, params, callback) {
     var self = this;
 
-    this._emoveOldTags();
+    this._removeOldTags();
 
     if (params.term == null || params.page != null) {
       decorated.call(this, params, callback);
@@ -3777,7 +3777,7 @@ S2.define('select2/data/tags',[
     data.unshift(tag);
   };
 
-  Tags.prototype._emoveOldTags = function (_) {
+  Tags.prototype._removeOldTags = function (_) {
     var $options = this.$element.find('option[data-select2-tag]');
 
     $options.each(function () {
@@ -3785,7 +3785,7 @@ S2.define('select2/data/tags',[
         return;
       }
 
-      $(this).emove();
+      $(this).remove();
     });
   };
 
@@ -3830,7 +3830,7 @@ S2.define('select2/data/tokenizer',[
         var $option = self.option(item);
         $option.attr('data-select2-tag', true);
 
-        self._emoveOldTags();
+        self._removeOldTags();
         self.addOptions([$option]);
       }
 
@@ -4063,8 +4063,8 @@ S2.define('select2/dropdown',[
   };
 
   Dropdown.prototype.destroy = function () {
-    // emove the dropdown from the DOM
-    this.$dropdown.emove();
+    // Remove the dropdown from the DOM
+    this.$dropdown.remove();
   };
 
   return Dropdown;
@@ -4133,8 +4133,8 @@ S2.define('select2/dropdown/search',[
 
     container.on('close', function () {
       self.$search.attr('tabindex', -1);
-      self.$search.emoveAttr('aria-controls');
-      self.$search.emoveAttr('aria-activedescendant');
+      self.$search.removeAttr('aria-controls');
+      self.$search.removeAttr('aria-activedescendant');
 
       self.$search.val('');
       self.$search.trigger('blur');
@@ -4151,7 +4151,7 @@ S2.define('select2/dropdown/search',[
         var showSearch = self.showSearch(params);
 
         if (showSearch) {
-          self.$searchContainer.emoveClass('select2-search--hide');
+          self.$searchContainer.removeClass('select2-search--hide');
         } else {
           self.$searchContainer.addClass('select2-search--hide');
         }
@@ -4162,7 +4162,7 @@ S2.define('select2/dropdown/search',[
       if (params.data._resultId) {
         self.$search.attr('aria-activedescendant', params.data._resultId);
       } else {
-        self.$search.emoveAttr('aria-activedescendant');
+        self.$search.removeAttr('aria-activedescendant');
       }
     });
   };
@@ -4196,7 +4196,7 @@ S2.define('select2/dropdown/hidePlaceholder',[
   }
 
   HidePlaceholder.prototype.append = function (decorated, data) {
-    data.results = this.emovePlaceholder(data.results);
+    data.results = this.removePlaceholder(data.results);
 
     decorated.call(this, data);
   };
@@ -4212,7 +4212,7 @@ S2.define('select2/dropdown/hidePlaceholder',[
     return placeholder;
   };
 
-  HidePlaceholder.prototype.emovePlaceholder = function (_, data) {
+  HidePlaceholder.prototype.removePlaceholder = function (_, data) {
     var modifiedData = data.slice(0);
 
     for (var d = data.length - 1; d >= 0; d--) {
@@ -4242,7 +4242,7 @@ S2.define('select2/dropdown/infiniteScroll',[
   }
 
   InfiniteScroll.prototype.append = function (decorated, data) {
-    this.$loadingMore.emove();
+    this.$loadingMore.remove();
     this.loading = false;
 
     decorated.call(this, data);
@@ -4358,14 +4358,14 @@ S2.define('select2/dropdown/attachBody',[
   AttachBody.prototype.destroy = function (decorated) {
     decorated.call(this);
 
-    this.$dropdownContainer.emove();
+    this.$dropdownContainer.remove();
   };
 
   AttachBody.prototype.position = function (decorated, $dropdown, $container) {
     // Clone all of the container classes
     $dropdown.attr('class', $container.attr('class'));
 
-    $dropdown.emoveClass('select2');
+    $dropdown.removeClass('select2');
     $dropdown.addClass('select2-container--open');
 
     $dropdown.css({
@@ -4546,10 +4546,10 @@ S2.define('select2/dropdown/attachBody',[
 
     if (newDirection != null) {
       this.$dropdown
-        .emoveClass('select2-dropdown--below select2-dropdown--above')
+        .removeClass('select2-dropdown--below select2-dropdown--above')
         .addClass('select2-dropdown--' + newDirection);
       this.$container
-        .emoveClass('select2-container--below select2-container--above')
+        .removeClass('select2-container--below select2-container--above')
         .addClass('select2-container--' + newDirection);
     }
 
@@ -4725,9 +4725,9 @@ S2.define('select2/i18n/en',[],function () {
       return message;
     },
     inputTooShort: function (args) {
-      var emainingChars = args.minimum - args.input.length;
+      var remainingChars = args.minimum - args.input.length;
 
-      var message = 'Please enter ' + emainingChars + ' or more characters';
+      var message = 'Please enter ' + remainingChars + ' or more characters';
 
       return message;
     },
@@ -4749,8 +4749,8 @@ S2.define('select2/i18n/en',[],function () {
     searching: function () {
       return 'Searching…';
     },
-    emoveAllItems: function () {
-      return 'emove all items';
+    removeAllItems: function () {
+      return 'Remove all items';
     }
   };
 });
@@ -5035,7 +5035,7 @@ S2.define('select2/defaults',[
       // Do a recursive check for options with children
       if (data.children && data.children.length > 0) {
         // Clone the data object if there are children
-        // This is required as we modify the object to emove any non-matches
+        // This is required as we modify the object to remove any non-matches
         var match = $.extend(true, {}, data);
 
         // Check each child of the option
@@ -5044,7 +5044,7 @@ S2.define('select2/defaults',[
 
           var matches = matcher(params, child);
 
-          // If there wasn't a match, emove the object in the array
+          // If there wasn't a match, remove the object in the array
           if (matches == null) {
             match.children.splice(c, 1);
           }
@@ -5271,7 +5271,7 @@ S2.define('select2/options',[
         console.warn(
           'Select2: The `data-select2-tags` attribute has been changed to ' +
           'use the `data-data` and `data-tags="true"` attributes and will be ' +
-          'emoved in future versions of Select2.'
+          'removed in future versions of Select2.'
         );
       }
 
@@ -5283,7 +5283,7 @@ S2.define('select2/options',[
       if (this.options.debug && window.console && console.warn) {
         console.warn(
           'Select2: The `data-ajax-url` attribute has been changed to ' +
-          '`data-ajax--url` and support for the old attribute will be emoved' +
+          '`data-ajax--url` and support for the old attribute will be removed' +
           ' in future versions of Select2.'
         );
       }
@@ -5586,7 +5586,7 @@ S2.define('select2/core',[
         false
       );
       this.$element[0].addEventListener(
-        'DOMNodeemoved',
+        'DOMNodeRemoved',
         self._syncS,
         false
       );
@@ -5646,11 +5646,11 @@ S2.define('select2/core',[
     });
 
     this.on('close', function () {
-      self.$container.emoveClass('select2-container--open');
+      self.$container.removeClass('select2-container--open');
     });
 
     this.on('enable', function () {
-      self.$container.emoveClass('select2-container--disabled');
+      self.$container.removeClass('select2-container--disabled');
     });
 
     this.on('disable', function () {
@@ -5658,7 +5658,7 @@ S2.define('select2/core',[
     });
 
     this.on('blur', function () {
-      self.$container.emoveClass('select2-container--focus');
+      self.$container.removeClass('select2-container--focus');
     });
 
     this.on('query', function (params) {
@@ -5760,7 +5760,7 @@ S2.define('select2/core',[
           changed = true;
         }
       }
-    } else if (mutations.emovedNodes && mutations.emovedNodes.length > 0) {
+    } else if (mutations.removedNodes && mutations.removedNodes.length > 0) {
       changed = true;
     } else if ($.isArray(mutations)) {
       $.each(mutations, function(evt, mutation) {
@@ -5902,7 +5902,7 @@ S2.define('select2/core',[
     if (this.options.get('debug') && window.console && console.warn) {
       console.warn(
         'Select2: The `select2("enable")` method has been deprecated and will' +
-        ' be emoved in later Select2 versions. Use $element.prop("disabled")' +
+        ' be removed in later Select2 versions. Use $element.prop("disabled")' +
         ' instead.'
       );
     }
@@ -5938,7 +5938,7 @@ S2.define('select2/core',[
     if (this.options.get('debug') && window.console && console.warn) {
       console.warn(
         'Select2: The `select2("val")` method has been deprecated and will be' +
-        ' emoved in later Select2 versions. Use $element.val() instead.'
+        ' removed in later Select2 versions. Use $element.val() instead.'
       );
     }
 
@@ -5958,7 +5958,7 @@ S2.define('select2/core',[
   };
 
   Select2.prototype.destroy = function () {
-    this.$container.emove();
+    this.$container.remove();
 
     if (this.$element[0].detachEvent) {
       this.$element[0].detachEvent('onpropertychange', this._syncA);
@@ -5967,13 +5967,13 @@ S2.define('select2/core',[
     if (this._observer != null) {
       this._observer.disconnect();
       this._observer = null;
-    } else if (this.$element[0].emoveEventListener) {
+    } else if (this.$element[0].removeEventListener) {
       this.$element[0]
-        .emoveEventListener('DOMAttrModified', this._syncA, false);
+        .removeEventListener('DOMAttrModified', this._syncA, false);
       this.$element[0]
-        .emoveEventListener('DOMNodeInserted', this._syncS, false);
+        .removeEventListener('DOMNodeInserted', this._syncS, false);
       this.$element[0]
-        .emoveEventListener('DOMNodeemoved', this._syncS, false);
+        .removeEventListener('DOMNodeRemoved', this._syncS, false);
     }
 
     this._syncA = null;
@@ -5983,10 +5983,10 @@ S2.define('select2/core',[
     this.$element.attr('tabindex',
     Utils.GetData(this.$element[0], 'old-tabindex'));
 
-    this.$element.emoveClass('select2-hidden-accessible');
+    this.$element.removeClass('select2-hidden-accessible');
     this.$element.attr('aria-hidden', 'false');
-    Utils.emoveData(this.$element[0]);
-    this.$element.emoveData('select2');
+    Utils.RemoveData(this.$element[0]);
+    this.$element.removeData('select2');
 
     this.dataAdapter.destroy();
     this.selection.destroy();
@@ -6188,7 +6188,7 @@ S2.define('select2/compat/initSelection',[
         'Select2: The `initSelection` option has been deprecated in favor' +
         ' of a custom data adapter that overrides the `current` method. ' +
         'This method is now called multiple times instead of a single ' +
-        'time when the instance is initialized. Support will be emoved ' +
+        'time when the instance is initialized. Support will be removed ' +
         'for the `initSelection` option in future versions of Select2'
       );
     }
@@ -6402,7 +6402,7 @@ S2.define('select2/compat/query',[
       console.warn(
         'Select2: The `query` option has been deprecated in favor of a ' +
         'custom data adapter that overrides the `query` method. Support ' +
-        'will be emoved for the `query` option in future versions of ' +
+        'will be removed for the `query` option in future versions of ' +
         'Select2.'
       );
     }
@@ -6568,16 +6568,16 @@ S2.define('select2/selection/stopPropagation',[
         },
 
         teardown: function() {
-            if ( this.emoveEventListener ) {
+            if ( this.removeEventListener ) {
                 for ( var i = toBind.length; i; ) {
-                    this.emoveEventListener( toBind[--i], handler, false );
+                    this.removeEventListener( toBind[--i], handler, false );
                 }
             } else {
                 this.onmousewheel = null;
             }
             // Clean up the data we added to the element
-            $.emoveData(this, 'mousewheel-line-height');
-            $.emoveData(this, 'mousewheel-page-height');
+            $.removeData(this, 'mousewheel-line-height');
+            $.removeData(this, 'mousewheel-page-height');
         },
 
         getLineHeight: function(elem) {

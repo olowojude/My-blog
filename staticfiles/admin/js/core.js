@@ -17,9 +17,9 @@ function quickElement() {
 }
 
 // "a" is reference to an object
-function emoveChildren(a) {
+function removeChildren(a) {
     while (a.hasChildNodes()) {
-        a.emoveChild(a.lastChild);
+        a.removeChild(a.lastChild);
     }
 }
 

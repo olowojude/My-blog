@@ -65,7 +65,7 @@
             e.preventDefault();
             const template = $("#" + options.prefix + "-empty");
             const row = template.clone(true);
-            row.emoveClass(options.emptyCssClass)
+            row.removeClass(options.emptyCssClass)
                 .addClass(options.formCssClass)
                 .attr("id", options.prefix + "-" + nextIndex);
             addInlineDeleteButton(row);
@@ -81,7 +81,7 @@
             if ((maxForms.val() !== '') && (maxForms.val() - totalForms.val()) <= 0) {
                 addButton.parent().hide();
             }
-            // Show the emove buttons if there are more than min_num.
+            // Show the remove buttons if there are more than min_num.
             toggleDeleteButtonVisibility(row.closest('.inline-group'));
 
             // Pass the new form to the post-add callback, if provided.
@@ -98,14 +98,14 @@
         const addInlineDeleteButton = function(row) {
             if (row.is("tr")) {
                 // If the forms are laid out in table rows, insert
-                // the emove button into the last table cell:
+                // the remove button into the last table cell:
                 row.children(":last").append('<div><a class="' + options.deleteCssClass + '" href="#">' + options.deleteText + "</a></div>");
             } else if (row.is("ul") || row.is("ol")) {
                 // If they're laid out as an ordered/unordered list,
                 // insert an <li> after the last list item:
                 row.append('<li><a class="' + options.deleteCssClass + '" href="#">' + options.deleteText + "</a></li>");
             } else {
-                // Otherwise, just insert the emove button as the
+                // Otherwise, just insert the remove button as the
                 // last child element of the form's container:
                 row.children(":first").append('<span><a class="' + options.deleteCssClass + '" href="#">' + options.deleteText + "</a></span>");
             }
@@ -118,19 +118,19 @@
             const deleteButton = $(e1.target);
             const row = deleteButton.closest('.' + options.formCssClass);
             const inlineGroup = row.closest('.inline-group');
-            // emove the parent form containing this button,
-            // and also emove the relevant row with non-field errors:
+            // Remove the parent form containing this button,
+            // and also remove the relevant row with non-field errors:
             const prevRow = row.prev();
             if (prevRow.length && prevRow.hasClass('row-form-errors')) {
-                prevRow.emove();
+                prevRow.remove();
             }
-            row.emove();
+            row.remove();
             nextIndex -= 1;
             // Pass the deleted form to the post-delete callback, if provided.
-            if (options.emoved) {
-                options.emoved(row);
+            if (options.removed) {
+                options.removed(row);
             }
-            $(document).trigger('formset:emoved', [row, options.prefix]);
+            $(document).trigger('formset:removed', [row, options.prefix]);
             // Update the TOTAL_FORMS form count.
             const forms = $("." + options.formCssClass);
             $("#id_" + options.prefix + "-TOTAL_FORMS").val(forms.length);
@@ -138,10 +138,10 @@
             if ((maxForms.val() === '') || (maxForms.val() - forms.length) > 0) {
                 addButton.parent().show();
             }
-            // Hide the emove buttons if at min_num.
+            // Hide the remove buttons if at min_num.
             toggleDeleteButtonVisibility(inlineGroup);
-            // Also, update names and ids for all emaining form controls so
-            // they emain in sequence:
+            // Also, update names and ids for all remaining form controls so
+            // they remain in sequence:
             let i, formCount;
             const updateElementCallback = function() {
                 updateElementIndex(this, options.prefix, i);
@@ -190,13 +190,13 @@
     $.fn.formset.defaults = {
         prefix: "form", // The form prefix for your django formset
         addText: "add another", // Text for the add link
-        deleteText: "emove", // Text for the delete link
+        deleteText: "remove", // Text for the delete link
         addCssClass: "add-row", // CSS class applied to the add link
         deleteCssClass: "delete-row", // CSS class applied to the delete link
         emptyCssClass: "empty-row", // CSS class applied to the empty row
         formCssClass: "dynamic-form", // CSS class applied to each form in a formset
         added: null, // Function called each time a new form is added
-        emoved: null, // Function called each time a form is deleted
+        removed: null, // Function called each time a form is deleted
         addButton: null // Existing add button to use
     };
 
@@ -208,7 +208,7 @@
         const reinitDateTimeShortCuts = function() {
             // Reinitialize the calendar and clock widgets by force
             if (typeof DateTimeShortcuts !== "undefined") {
-                $(".datetimeshortcuts").emove();
+                $(".datetimeshortcuts").remove();
                 DateTimeShortcuts.init();
             }
         };
@@ -272,7 +272,7 @@
         const reinitDateTimeShortCuts = function() {
             // Reinitialize the calendar and clock widgets by force, yuck.
             if (typeof DateTimeShortcuts !== "undefined") {
-                $(".datetimeshortcuts").emove();
+                $(".datetimeshortcuts").remove();
                 DateTimeShortcuts.init();
             }
         };
@@ -311,7 +311,7 @@
             deleteCssClass: "inline-deletelink",
             deleteText: options.deleteText,
             emptyCssClass: "empty-form",
-            emoved: updateInlineLabel,
+            removed: updateInlineLabel,
             added: function(row) {
                 initPrepopulatedFields(row);
                 reinitDateTimeShortCuts();

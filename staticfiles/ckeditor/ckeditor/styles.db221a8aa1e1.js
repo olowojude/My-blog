@@ -11,7 +11,7 @@
 //
 // If you do not have plugins that depend on this file in your editor build, you can simply
 // ignore it. Otherwise it is strongly recommended to customize this file to match your
-// website requiements and design properly.
+// website requirements and design properly.
 //
 // For more information refer to: https://ckeditor.com/docs/ckeditor4/latest/guide/dev_styles.html#style-rules
 
@@ -48,7 +48,7 @@ CKEDITOR.stylesSet.add( 'default', [
 	/* Inline styles */
 
 	// These are core styles available as toolbar buttons. You may opt enabling
-	// some of them in the Styles drop-down list, emoving them from the toolbar.
+	// some of them in the Styles drop-down list, removing them from the toolbar.
 	// (This requires the "stylescombo" plugin.)
 	/*
 	{ name: 'Strong',			element: 'strong', overrides: 'b' },

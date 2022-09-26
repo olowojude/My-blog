@@ -209,7 +209,7 @@
         },
         dismissClock: function(num) {
             document.getElementById(DateTimeShortcuts.clockDivName + num).style.display = 'none';
-            document.emoveEventListener('click', DateTimeShortcuts.dismissClockFunc[num]);
+            document.removeEventListener('click', DateTimeShortcuts.dismissClockFunc[num]);
         },
         handleClockQuicklink: function(num, val) {
             let d;
@@ -379,7 +379,7 @@
         },
         dismissCalendar: function(num) {
             document.getElementById(DateTimeShortcuts.calendarDivName1 + num).style.display = 'none';
-            document.emoveEventListener('click', DateTimeShortcuts.dismissCalendarFunc[num]);
+            document.removeEventListener('click', DateTimeShortcuts.dismissCalendarFunc[num]);
         },
         drawPrev: function(num) {
             DateTimeShortcuts.calendars[num].drawPreviousMonth();

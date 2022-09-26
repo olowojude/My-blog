@@ -79,7 +79,7 @@
                 o.node.parentNode.parentNode.style.display = displayValue;
             }
             if (!filterValue || matches) {
-                event.target.classList.emove('no-results');
+                event.target.classList.remove('no-results');
             } else {
                 event.target.classList.add('no-results');
             }

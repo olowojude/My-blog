@@ -83,7 +83,7 @@
     border-radius: 0 0 4px 4px;
 }
 
-.selector-add, .selector-emove {
+.selector-add, .selector-remove {
     width: 16px;
     height: 16px;
     display: block;
@@ -93,11 +93,11 @@
     opacity: 0.55;
 }
 
-.active.selector-add, .active.selector-emove {
+.active.selector-add, .active.selector-remove {
     opacity: 1;
 }
 
-.active.selector-add:hover, .active.selector-emove:hover {
+.active.selector-add:hover, .active.selector-remove:hover {
     cursor: pointer;
 }
 
@@ -109,11 +109,11 @@
     background-position: 0 -112px;
 }
 
-.selector-emove {
+.selector-remove {
     background: url(../img/selector-icons.svg) 0 -64px no-repeat;
 }
 
-.active.selector-emove:focus, .active.selector-emove:hover {
+.active.selector-remove:focus, .active.selector-remove:hover {
     background-position: 0 -80px;
 }
 
@@ -219,17 +219,17 @@ a.active.selector-clearall:focus, a.active.selector-clearall:hover {
     cursor: pointer;
 }
 
-.stacked .selector-emove {
+.stacked .selector-remove {
     background: url(../img/selector-icons.svg) 0 0 no-repeat;
     cursor: default;
 }
 
-.stacked .active.selector-emove {
+.stacked .active.selector-remove {
     background-position: 0 0px;
     cursor: pointer;
 }
 
-.stacked .active.selector-emove:focus, .stacked .active.selector-emove:hover {
+.stacked .active.selector-remove:focus, .stacked .active.selector-remove:hover {
     background-position: 0 -16px;
     cursor: pointer;
 }

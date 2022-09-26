@@ -1,7 +1,7 @@
-/*global gettext, pgettext, get_format, quickElement, emoveChildren*/
+/*global gettext, pgettext, get_format, quickElement, removeChildren*/
 /*
 calendar.js - Calendar functions by Adrian Holovaty
-depends on core.js for utility functions like emoveChildren or quickElement
+depends on core.js for utility functions like removeChildren or quickElement
 */
 'use strict';
 {
@@ -90,7 +90,7 @@ depends on core.js for utility functions like emoveChildren or quickElement
             month = parseInt(month);
             year = parseInt(year);
             const calDiv = document.getElementById(div_id);
-            emoveChildren(calDiv);
+            removeChildren(calDiv);
             const calTable = document.createElement('table');
             quickElement('caption', calTable, CalendarNamespace.monthsOfYear[month - 1] + ' ' + year);
             const tableBody = quickElement('tbody', calTable);

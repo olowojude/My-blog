@@ -20,7 +20,7 @@ module.exports = function(XRegExp) {
      *
      * @private
      * @param {String} pattern Pattern to process.
-     * @returns {String} Pattern with edge anchors emoved.
+     * @returns {String} Pattern with edge anchors removed.
      */
     function deanchor(pattern) {
         // Allow any number of empty noncapturing groups before/after anchors, because regexes
@@ -430,7 +430,7 @@ module.exports = function(XRegExp) {
     var hex = XRegExp._hex;
     var pad4 = XRegExp._pad4;
 
-    // Generates a token lookup name: lowercase, with hyphens, spaces, and underscores emoved
+    // Generates a token lookup name: lowercase, with hyphens, spaces, and underscores removed
     function normalize(name) {
         return name.replace(/[- _]+/g, '').toLowerCase();
     }
@@ -645,7 +645,7 @@ module.exports = function(XRegExp) {
      * For more info on Unicode Properties, see also http://unicode.org/reports/tr18/#Categories.
      *
      * @note
-     * This method is *not* part of the officially documented API and may change or be emoved in
+     * This method is *not* part of the officially documented API and may change or be removed in
      * the future. It is meant for userland code that wishes to reuse the (large) internal Unicode
      * structures set up by XRegExp.
      */
@@ -2028,7 +2028,7 @@ module.exports = function(XRegExp) {
     'use strict';
 
     /**
-     * Adds properties to meet the UTS #18 Level 1 RL1.2 requiements for Unicode regex support. See
+     * Adds properties to meet the UTS #18 Level 1 RL1.2 requirements for Unicode regex support. See
      * <http://unicode.org/reports/tr18/#RL1.2>. Following are definitions of these properties from
      * UAX #44 <http://unicode.org/reports/tr44/>:
      *
@@ -2859,11 +2859,11 @@ function augment(regex, captureNames, xSource, xFlags, isInternalOnly) {
 }
 
 /**
- * emoves any duplicate characters from the provided string.
+ * Removes any duplicate characters from the provided string.
  *
  * @private
- * @param {String} str String to emove duplicate characters from.
- * @returns {String} String with any duplicate characters emoved.
+ * @param {String} str String to remove duplicate characters from.
+ * @returns {String} String with any duplicate characters removed.
  */
 function clipDuplicates(str) {
     return nativ.replace.call(str, /([\s\S])(?=[\s\S]*\1)/g, '');
@@ -2871,7 +2871,7 @@ function clipDuplicates(str) {
 
 /**
  * Copies a regex object while preserving extended data and augmenting with `XRegExp.prototype`
- * properties. The copy has a fresh `lastIndex` property (set to zero). Allows adding and emoving
+ * properties. The copy has a fresh `lastIndex` property (set to zero). Allows adding and removing
  * flags g and y while copying the regex.
  *
  * @private
@@ -2879,8 +2879,8 @@ function clipDuplicates(str) {
  * @param {Object} [options] Options object with optional properties:
  *   - `addG` {Boolean} Add flag g while copying the regex.
  *   - `addY` {Boolean} Add flag y while copying the regex.
- *   - `emoveG` {Boolean} emove flag g while copying the regex.
- *   - `emoveY` {Boolean} emove flag y while copying the regex.
+ *   - `removeG` {Boolean} Remove flag g while copying the regex.
+ *   - `removeY` {Boolean} Remove flag y while copying the regex.
  *   - `isInternalOnly` {Boolean} Whether the copied regex will be used only for internal
  *     operations, and never exposed to users. For internal-only regexes, we can improve perf by
  *     skipping some operations like attaching `XRegExp.prototype` properties.
@@ -2895,16 +2895,16 @@ function copyRegex(regex, options) {
     var xData = regex[REGEX_DATA] || {};
     var flags = getNativeFlags(regex);
     var flagsToAdd = '';
-    var flagsToemove = '';
+    var flagsToRemove = '';
     var xregexpSource = null;
     var xregexpFlags = null;
 
     options = options || {};
 
-    if (options.emoveG) {flagsToemove += 'g';}
-    if (options.emoveY) {flagsToemove += 'y';}
-    if (flagsToemove) {
-        flags = nativ.replace.call(flags, new RegExp('[' + flagsToemove + ']+', 'g'), '');
+    if (options.removeG) {flagsToRemove += 'g';}
+    if (options.removeY) {flagsToRemove += 'y';}
+    if (flagsToRemove) {
+        flags = nativ.replace.call(flags, new RegExp('[' + flagsToRemove + ']+', 'g'), '');
     }
 
     if (options.addG) {flagsToAdd += 'g';}
@@ -2921,7 +2921,7 @@ function copyRegex(regex, options) {
         // that indicates we're not tracking original precompilation flags
         if (xData.flags != null) {
             // Flags are only added for non-internal regexes by `XRegExp.globalize`. Flags are never
-            // emoved for non-internal regexes, so don't need to handle it
+            // removed for non-internal regexes, so don't need to handle it
             xregexpFlags = flagsToAdd ? clipDuplicates(xData.flags + flagsToAdd) : xData.flags;
         }
     }
@@ -2974,7 +2974,7 @@ function getContextualTokenSeparator(match, scope, flags) {
         return '';
     }
     // Keep tokens separated. This avoids e.g. inadvertedly changing `\1 1` or `\1(?#)1` to `\11`.
-    // This also ensures all tokens emain as discrete atoms, e.g. it avoids converting the syntax
+    // This also ensures all tokens remain as discrete atoms, e.g. it avoids converting the syntax
     // error `(? :` into `(?:`.
     return '(?:)';
 }
@@ -3599,7 +3599,7 @@ XRegExp.exec = function(str, regex, pos, sticky) {
             addG: true,
             addY: addY,
             source: fakeY ? regex.source + '|()' : undefined,
-            emoveY: sticky === false,
+            removeY: sticky === false,
             isInternalOnly: true
         })
     );
@@ -3786,7 +3786,7 @@ XRegExp.match = function(str, regex, scope) {
     r2 = regex[REGEX_DATA][cacheKey] || (
         regex[REGEX_DATA][cacheKey] = copyRegex(regex, {
             addG: !!global,
-            emoveG: scope === 'one',
+            removeG: scope === 'one',
             isInternalOnly: true
         })
     );
@@ -3926,7 +3926,7 @@ XRegExp.replace = function(str, search, replacement, scope) {
         s2 = search[REGEX_DATA][cacheKey] || (
             search[REGEX_DATA][cacheKey] = copyRegex(search, {
                 addG: !!global,
-                emoveG: scope === 'one',
+                removeG: scope === 'one',
                 isInternalOnly: true
             })
         );
@@ -4170,7 +4170,7 @@ fixed.exec = function(str) {
         // in standards mode follows the spec.
         if (!correctExecNpcg && match.length > 1 && indexOf(match, '') > -1) {
             r2 = copyRegex(this, {
-                emoveG: true,
+                removeG: true,
                 isInternalOnly: true
             });
             // Using `str.slice(match.index)` rather than `match[0]` in case lookahead allowed
@@ -4198,7 +4198,7 @@ fixed.exec = function(str) {
             }
         }
 
-        // Fix browsers that incement `lastIndex` after zero-length matches
+        // Fix browsers that increment `lastIndex` after zero-length matches
         if (this.global && !match[0].length && (this.lastIndex > match.index)) {
             this.lastIndex = match.index;
         }

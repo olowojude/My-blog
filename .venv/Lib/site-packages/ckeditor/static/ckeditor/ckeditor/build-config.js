@@ -20,7 +20,7 @@
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
- *    This file is not used by CKEditor, you may emove it.
+ *    This file is not used by CKEditor, you may remove it.
  *    Changing this file will not change your CKEditor configuration.
  */
 
@@ -98,7 +98,7 @@ var CKBUILDER_CONFIG = {
 		'pastetext' : 1,
 		'preview' : 1,
 		'print' : 1,
-		'emoveformat' : 1,
+		'removeformat' : 1,
 		'resize' : 1,
 		'save' : 1,
 		'scayt' : 1,

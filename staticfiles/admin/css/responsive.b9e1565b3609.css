@@ -296,7 +296,7 @@ input[type="submit"], button {
         transform: translateY(-10px);
     }
 
-    .selector-add, .selector-emove {
+    .selector-add, .selector-remove {
         width: 20px;
         height: 20px;
         background-size: 20px auto;
@@ -306,7 +306,7 @@ input[type="submit"], button {
         background-position: 0 -120px;
     }
 
-    .selector-emove {
+    .selector-remove {
         background-position: 0 -80px;
     }
 
@@ -343,7 +343,7 @@ input[type="submit"], button {
         padding: 3px;
     }
 
-    .stacked .selector-add, .stacked .selector-emove {
+    .stacked .selector-add, .stacked .selector-remove {
         background-size: 20px auto;
     }
 
@@ -363,19 +363,19 @@ input[type="submit"], button {
         background-position: 0 -60px;
     }
 
-    .stacked .selector-emove {
+    .stacked .selector-remove {
         background-position: 0 0;
     }
 
-    .stacked .active.selector-emove {
+    .stacked .active.selector-remove {
         background-position: 0 0;
     }
 
-    .active.selector-emove:focus, .active.selector-emove:hover {
+    .active.selector-remove:focus, .active.selector-remove:hover {
         background-position: 0 -100px;
     }
 
-    .stacked .active.selector-emove:focus, .stacked .active.selector-emove:hover {
+    .stacked .active.selector-remove:focus, .stacked .active.selector-remove:hover {
         background-position: 0 -20px;
     }
 
@@ -722,11 +722,11 @@ input[type="submit"], button {
         float: left;
     }
 
-    .selector-emove {
+    .selector-remove {
         background-position: 0 0;
     }
 
-    .active.selector-emove:focus, .active.selector-emove:hover {
+    .active.selector-remove:focus, .active.selector-remove:hover {
         background-position: 0 -20px;
     }
 

@@ -45,14 +45,14 @@
 			return true;
 		},
 
-		// emoves an image from its respective gallery by its hash.
+		// Removes an image from its respective gallery by its hash.
 		// Returns false when an image is not found for the specified hash or the
 		// specified owner gallery does match the located images gallery.
 		// @param {String} hash This is the unique hash value assigned to an image.
 		// @param {Object} ownerGallery (Optional) When supplied, the located images
 		// gallery is verified to be the same as the specified owning gallery before
-		// performing the emove operation.
-		emoveImageByHash: function(hash, ownerGallery) {
+		// performing the remove operation.
+		removeImageByHash: function(hash, ownerGallery) {
 			var imageData = $.galleriffic.getImage(hash);
 			if (!imageData)
 				return false;
@@ -61,7 +61,7 @@
 			if (ownerGallery && ownerGallery != gallery)
 				return false;
 
-			return gallery.emoveImageByIndex(imageData.index);
+			return gallery.removeImageByIndex(imageData.index);
 		}
 	};
 
@@ -94,7 +94,7 @@
 		onPageTransitionOut:       undefined, // accepts a delegate like such: function(callback) { ... }
 		onPageTransitionIn:        undefined, // accepts a delegate like such: function() { ... }
 		onImageAdded:              undefined, // accepts a delegate like such: function(imageData, $li) { ... }
-		onImageemoved:            undefined  // accepts a delegate like such: function(imageData, $li) { ... }
+		onImageRemoved:            undefined  // accepts a delegate like such: function(imageData, $li) { ... }
 	};
 
 	// Primary Galleriffic initialization function that should be called on the thumbnail container.
@@ -145,10 +145,10 @@
 				var $aThumb = $li.find('a.thumb');
 				var slideUrl = $aThumb.attr('href');
 				var title = $aThumb.attr('title');
-				var $caption = $li.find('.caption').emove();
+				var $caption = $li.find('.caption').remove();
 				var hash = $aThumb.attr('name');
 
-				// Incement the image counter
+				// Increment the image counter
 				imageCounter++;
 
 				// Autogenerate a hash value if none is present or if it is a duplicate
@@ -203,7 +203,7 @@
 				// Setup attributes and click handler
 				$aThumb.attr('rel', 'history')
 					.attr('href', '#'+hash)
-					.emoveAttr('name')
+					.removeAttr('name')
 					.click(function(e) {
 						gallery.clickHandler(e, this);
 					});
@@ -211,9 +211,9 @@
 				return this;
 			},
 
-			// emoves an image from the gallery based on its index.
+			// Removes an image from the gallery based on its index.
 			// Returns false when the index is out of range.
-			emoveImageByIndex: function(index) {
+			removeImageByIndex: function(index) {
 				if (index < 0 || index >= this.data.length)
 					return false;
 				
@@ -221,34 +221,34 @@
 				if (!imageData)
 					return false;
 				
-				this.emoveImage(imageData);
+				this.removeImage(imageData);
 				
 				return true;
 			},
 
-			// Convenience method that simply calls the global emoveImageByHash method.
-			emoveImageByHash: function(hash) {
-				return $.galleriffic.emoveImageByHash(hash, this);
+			// Convenience method that simply calls the global removeImageByHash method.
+			removeImageByHash: function(hash) {
+				return $.galleriffic.removeImageByHash(hash, this);
 			},
 
-			// emoves an image from the gallery.
-			emoveImage: function(imageData) {
+			// Removes an image from the gallery.
+			removeImage: function(imageData) {
 				var index = imageData.index;
 				
-				// emove the image from the gallery data array
+				// Remove the image from the gallery data array
 				this.data.splice(index, 1);
 				
-				// emove the global registration
+				// Remove the global registration
 				delete allImages[''+imageData.hash];
 				
-				// emove the image's list item from the DOM
+				// Remove the image's list item from the DOM
 				this.updateThumbs(function() {
 					var $li = gallery.find('ul.thumbs')
 						.children(':eq('+index+')')
-						.emove();
+						.remove();
 
-					if (gallery.onImageemoved)
-						gallery.onImageemoved(imageData, $li);
+					if (gallery.onImageRemoved)
+						gallery.onImageRemoved(imageData, $li);
 				});
 
 				// Update each image objects index value
@@ -385,7 +385,7 @@
 
 				if (this.$ssControlsContainer) {
 					this.$ssControlsContainer
-						.find('div.ss-controls a').emoveClass().addClass('play')
+						.find('div.ss-controls a').removeClass().addClass('play')
 						.attr('title', this.playLinkText)
 						.attr('href', '#play')
 						.html(this.playLinkText);
@@ -400,7 +400,7 @@
 
 				if (this.$ssControlsContainer) {
 					this.$ssControlsContainer
-						.find('div.ss-controls a').emoveClass().addClass('pause')
+						.find('div.ss-controls a').removeClass().addClass('pause')
 						.attr('title', this.pauseLinkText)
 						.attr('href', '#pause')
 						.html(this.pauseLinkText);
@@ -544,11 +544,11 @@
 						.find('div.nav-controls a.next').attr('href', '#'+this.data[this.getNextIndex(index)].hash);
 				}
 
-				var previousSlide = this.$imageContainer.find('span.current').addClass('previous').emoveClass('current');
+				var previousSlide = this.$imageContainer.find('span.current').addClass('previous').removeClass('current');
 				var previousCaption = 0;
 
 				if (this.$captionContainer) {
-					previousCaption = this.$captionContainer.find('span.current').addClass('previous').emoveClass('current');
+					previousCaption = this.$captionContainer.find('span.current').addClass('previous').removeClass('current');
 				}
 
 				// Perform transitions simultaneously if syncTransitions is true and the next image is already preloaded
@@ -562,12 +562,12 @@
 					// Flag that the transition has completed
 					isTransitioning = false;
 
-					// emove the old slide
-					previousSlide.emove();
+					// Remove the old slide
+					previousSlide.remove();
 
-					// emove old caption
+					// Remove old caption
 					if (previousCaption)
-						previousCaption.emove();
+						previousCaption.remove();
 
 					if (!isSync) {
 						if (imageData.image && imageData.hash == gallery.data[gallery.currentImage.index].hash) {
@@ -686,9 +686,9 @@
 				if (page != this.displayedPage)
 					this.updateThumbs();
 
-				// emove existing selected class and add selected class to new thumb
+				// Remove existing selected class and add selected class to new thumb
 				var $thumbs = this.find('ul.thumbs').children();
-				$thumbs.filter('.selected').emoveClass('selected');
+				$thumbs.filter('.selected').removeClass('selected');
 				$thumbs.eq(this.currentImage.index).addClass('selected');
 
 				return this;
@@ -772,8 +772,8 @@
 
 				this.displayedPage = page;
 
-				// emove the noscript class from the thumbs container ul
-				$thumbsUl.emoveClass('noscript');
+				// Remove the noscript class from the thumbs container ul
+				$thumbsUl.removeClass('noscript');
 				
 				return this;
 			},
@@ -790,13 +790,13 @@
 				var numPages = this.getNumPages();
 				var page = this.getCurrentPage();
 				var startIndex = page * this.numThumbs;
-				var pagesemaining = this.maxPagesToShow - 1;
+				var pagesRemaining = this.maxPagesToShow - 1;
 				
 				var pageNum = page - Math.floor((this.maxPagesToShow - 1) / 2) + 1;
 				if (pageNum > 0) {
-					var emainingPageCount = numPages - pageNum;
-					if (emainingPageCount < pagesemaining) {
-						pageNum = pageNum - (pagesemaining - emainingPageCount);
+					var remainingPageCount = numPages - pageNum;
+					if (remainingPageCount < pagesRemaining) {
+						pageNum = pageNum - (pagesRemaining - remainingPageCount);
 					}
 				}
 
@@ -816,13 +816,13 @@
 					if (pageNum > 1)
 						pager.append('<span class="ellipsis">&hellip;</span>');
 					
-					pagesemaining--;
+					pagesRemaining--;
 				}
 
 				// Page Index Links
-				while (pagesemaining > 0) {
+				while (pagesRemaining > 0) {
 					this.buildPageLink(pager, pageNum, numPages);
-					pagesemaining--;
+					pagesRemaining--;
 					pageNum++;
 				}
 

@@ -48,7 +48,7 @@
                 elm.attr('href', elm.attr('data-href-template').replace('__fk__', value));
             });
         } else {
-            siblings.emoveAttr('href');
+            siblings.removeAttr('href');
         }
     }
 
@@ -102,7 +102,7 @@
         const selects = $(selectsSelector);
         selects.find('option').each(function() {
             if (this.value === objId) {
-                $(this).emove();
+                $(this).remove();
             }
         }).trigger('change');
         win.close();

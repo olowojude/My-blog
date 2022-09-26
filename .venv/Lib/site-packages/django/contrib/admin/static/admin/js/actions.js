@@ -3,7 +3,7 @@
 {
     function show(selector) {
         document.querySelectorAll(selector).forEach(function(el) {
-            el.classList.emove('hidden');
+            el.classList.remove('hidden');
         });
     }
 
@@ -22,7 +22,7 @@
     function showClear(options) {
         show(options.acrossClears);
         hide(options.acrossQuestions);
-        document.querySelector(options.actionContainer).classList.emove(options.selectedClass);
+        document.querySelector(options.actionContainer).classList.remove(options.selectedClass);
         show(options.allContainer);
         hide(options.counterContainer);
     }
@@ -40,7 +40,7 @@
         acrossInputs.forEach(function(acrossInput) {
             acrossInput.value = 0;
         });
-        document.querySelector(options.actionContainer).classList.emove(options.selectedClass);
+        document.querySelector(options.actionContainer).classList.remove(options.selectedClass);
     }
 
     function checker(actionCheckboxes, options, checked) {
