@@ -2,7 +2,7 @@
 
 ### Preview
 
-![The blog screenshot](/static\images\project-screenshot.png)
+![The blog full page screenshot](/static/images/project-screenshot.png)
 
 ### Description
 
@@ -11,21 +11,16 @@ My personal blog, this was built with Django. You can check out live site here h
 ### How-to-Install-and-Run-the-Project
 
 - Clone the project
+
 - Create a virtual environment using the commands below
 
-# Install the virtualenv first
-
-> pip install virtualenv
-
-# Then create the virtual environment
-
-> virtualenv envname
+  `py -m venv .venv`
 
 - Activate the virtual environment with the command below
 
-  > envname\scripts\activate
+  `.venv\scripts\activate`
 
-- Next install the requirements
+- Next up is to install the requirements
 
   > pip install -r requirements.txt
 
