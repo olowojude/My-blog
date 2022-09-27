@@ -12,7 +12,7 @@ My personal blog, this was built with Django. You can check out live site here h
 
 - Clone the project
 
-- Create a virtual environment using the commands below
+- Create a virtual environment using the command below
 
   `py -m venv .venv`
 
@@ -22,10 +22,10 @@ My personal blog, this was built with Django. You can check out live site here h
 
 - Next up is to install the requirements
 
-  > pip install -r requirements.txt
+  `pip install -r requirements.txt`
 
 - Next step is runnig the project which is done using
 
-  > python manage.py runserver
+  `python manage.py runserver`
 
 - Next the development server will be started at http://127.0.0.1:8000/
