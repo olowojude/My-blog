@@ -440,6 +440,9 @@ hr {
 	}
 }
 @media(max-width: 600px) {
+	nav {
+		padding: 1em;
+	}
 	.hero-section {
 		margin-top: 2em;
 	}
@@ -524,9 +527,6 @@ hr {
 
 }
 @media(max-width: 380px) {
-	nav {
-		padding: 1em 1em;
-	}
 	.form_container {
 		width: 20em;
 	}
