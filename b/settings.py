@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "ba.apps.BaConfig",
     "ckeditor",
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
