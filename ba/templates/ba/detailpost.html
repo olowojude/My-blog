@@ -22,9 +22,9 @@
     <strong>{{comment.name}}</strong><br />
     <p>{{comment.body}}</p>
     <br />
-    {% if request.user == comment.name }
-    <a href="{% url 'deleteComment' comment.id %}">Delete</a>
-    {% endif %}
+    <!-- {% if request.user == comment.name } -->
+    <!-- <a href="{% url 'deleteComment' comment.id %}">Delete</a> -->
+    <!-- {% endif %} -->
     <small>Commented - {{comment.date_commented| timesince}} ago </small>
     <hr />
     {% empty %}
