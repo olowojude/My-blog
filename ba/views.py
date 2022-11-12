@@ -87,8 +87,7 @@ def deleteComment(request, pk):
         return redirect("home")
     
     context = {
-        "comment": comment,
-        #"post": post            
+        "comment": comment,       
     }
     return render(request, "ba/delete.html", context)    
 
