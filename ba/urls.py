@@ -5,14 +5,17 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 #from django.conf.urls.static import static
 
 urlpatterns = [
+    path("", views.heroPage, name = "home"),
 
-    path("", views.home, name = "home"),
+    path("posts/", views.Posts, name = "posts"),
     
-    path("<slug:slug>/", views.detailpost, name = "detailpost"),
+    path("posts/<slug:slug>/", views.postDetail, name = "post-detail"),
     
-    path("delete-comment/<str:pk>/", views.deleteComment, name="deleteComment"),
+    path("delete/<str:pk>/", views.deleteComment, name="deleteComment"),
 
-    path("email-sent/", views.thankYouPage, name = "thank-you-page"),
+    path("contact/", views.contactMe, name = "contact-me"),
+
+    path("contact/sent/", views.thankYouPage, name = "thank-you-page"),
 
     path("error/", views.notFound, name="notfound"),
 

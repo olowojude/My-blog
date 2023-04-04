@@ -1,0 +1,58 @@
+{% extends "ba/main.html" %}
+
+{% block content %}
+
+<!-- contact me section -->
+
+<section class="contact_me" id="contact">
+	<!-- contact me heading -->
+	<h1 class="heading">contact me</h1>
+  
+	<!-- contact me main container which contains everything except the heading -->
+	<div class="contact_me_container">
+	  <span class="contact_me_text">Have any questions? Go ahead..</span>
+  
+	  <!-- contact us form container -->
+	  <form method="POST" action="" class="form_container">	
+		{% csrf_token %}
+		<!-- individual input container1 -->				
+		  <div class="form_holder">
+			  <input type="text" class="transparent" name="name" placeholder="Name..." required>
+		  </div>
+																  
+		  <!-- individual input container2  -->	
+		  <div class="form_holder">
+			  <input class="transparent" type="text" name="email" placeholder="Email..." >
+		  </div>
+													  
+		  <!-- individual input cont.. 3 for message -->
+		  <div>
+			  <input class="transparent" name="body" placeholder="Type Message Here.."></input>
+		  </div>
+												  
+		  <!-- input button -->		
+		  <input id="send_msg_btn" type="submit" value="Send">															
+	  </form>
+	  <span class="contact_me_text text2">
+		You can also connect with me on any of these social media pages
+	  </span>
+  
+	  <!-- icons container -->
+	  <div class="icons_container">
+		<a href="https://github.com/olowojude"
+		  ><i class="fa fa-github" aria-hidden="true"></i
+		></a>
+		<a href="https://www.linkedin.com/in/Jude-olowo-397570232"
+		  ><i class="fa fa-linkedin"></i
+		></a>
+		<a href="https://twitter.com/jude_olowo/"
+		  ><i class="fab fa-twitter-square"></i
+		></a>
+	  </div>
+	</div>
+  </section>
+
+<!--footer section -->
+{% include 'ba/footer.html' %} {% endblock %}
+
+{% endblock %}
